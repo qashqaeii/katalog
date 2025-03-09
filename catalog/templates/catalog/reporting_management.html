@@ -1,0 +1,310 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}مدیریت گزارش‌ها - V2Bot{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
+    <!-- پس‌زمینه متحرک -->
+    <div class="absolute inset-0">
+        <div class="absolute w-full h-full">
+            <div class="absolute w-[2000px] h-[2000px] bg-gradient-to-r from-amber-600/30 via-orange-600/30 to-red-600/30 rounded-full blur-[100px] -top-[500px] -right-[500px] animate-pulse-slow mix-blend-overlay"></div>
+            <div class="absolute w-[1800px] h-[1800px] bg-gradient-to-r from-red-500/20 via-orange-500/20 to-amber-500/20 rounded-full blur-[120px] top-[100px] -left-[300px] animate-pulse-reverse mix-blend-overlay"></div>
+        </div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="relative z-10 container mx-auto px-4 py-16">
+        <!-- هدر صفحه -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold bg-gradient-to-r from-amber-400 via-orange-400 to-red-400 text-transparent bg-clip-text mb-6 font-display animate-title">
+                مدیریت گزارش‌ها و تحلیل‌های دقیق از عملکرد سیستم و فعالیت کاربران
+            </h1>
+            <p class="text-xl text-amber-200/80 max-w-3xl mx-auto animate-subtitle">
+                گزارش‌های جامع و تحلیل‌های دقیق از عملکرد سیستم و فعالیت کاربران
+            </p>
+        </div>
+
+        <!-- داشبورد آماری -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-amber-900/50 to-red-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-white">کاربران فعال</h3>
+                        <div class="bg-gradient-to-br from-amber-500 to-red-500 rounded-xl p-2">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <span class="text-3xl font-bold text-white">1,234</span>
+                            <p class="text-amber-200/80 text-sm">کاربر فعال</p>
+                        </div>
+                        <div class="text-green-400 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                            </svg>
+                            <span>12%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-amber-900/50 to-red-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-white">درآمد ماهانه</h3>
+                        <div class="bg-gradient-to-br from-amber-500 to-red-500 rounded-xl p-2">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <span class="text-3xl font-bold text-white">8.5M</span>
+                            <p class="text-amber-200/80 text-sm">تومان</p>
+                        </div>
+                        <div class="text-green-400 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                            </svg>
+                            <span>8%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-amber-900/50 to-red-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-white">سرویس‌های فعال</h3>
+                        <div class="bg-gradient-to-br from-amber-500 to-red-500 rounded-xl p-2">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <span class="text-3xl font-bold text-white">2,567</span>
+                            <p class="text-amber-200/80 text-sm">سرویس</p>
+                        </div>
+                        <div class="text-green-400 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+                            </svg>
+                            <span>15%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-amber-900/50 to-red-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-white">ترافیک مصرفی</h3>
+                        <div class="bg-gradient-to-br from-amber-500 to-red-500 rounded-xl p-2">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <span class="text-3xl font-bold text-white">15.2</span>
+                            <p class="text-amber-200/80 text-sm">ترابایت</p>
+                        </div>
+                        <div class="text-red-400 flex items-center">
+                            <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                            </svg>
+                            <span>5%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- نمودارها و گزارش‌ها -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <!-- نمودار درآمد -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-amber-900/50 to-red-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-white">نمودار درآمد</h3>
+                        <select class="bg-amber-900/30 border border-amber-500/30 rounded-lg px-3 py-1 text-amber-200 focus:outline-none focus:border-amber-500">
+                            <option>هفته گذشته</option>
+                            <option>ماه گذشته</option>
+                            <option>سال گذشته</option>
+                        </select>
+                    </div>
+                    <div class="h-64 bg-amber-900/30 rounded-xl"></div>
+                </div>
+            </div>
+
+            <!-- نمودار کاربران -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-amber-900/50 to-red-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-bold text-white">نمودار کاربران</h3>
+                        <select class="bg-amber-900/30 border border-amber-500/30 rounded-lg px-3 py-1 text-amber-200 focus:outline-none focus:border-amber-500">
+                            <option>هفته گذشته</option>
+                            <option>ماه گذشته</option>
+                            <option>سال گذشته</option>
+                        </select>
+                    </div>
+                    <div class="h-64 bg-amber-900/30 rounded-xl"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- جدول تراکنش‌ها -->
+        <div class="relative group mb-12">
+            <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-red-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-amber-900/50 to-red-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-white">آخرین تراکنش‌ها</h3>
+                    <button class="bg-gradient-to-r from-amber-500 to-red-500 text-white px-4 py-2 rounded-lg hover:from-amber-600 hover:to-red-600 transition-all duration-300">
+                        دانلود گزارش
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-amber-500/20">
+                                <th class="text-right py-3 px-4 text-amber-200/80">شناسه</th>
+                                <th class="text-right py-3 px-4 text-amber-200/80">کاربر</th>
+                                <th class="text-right py-3 px-4 text-amber-200/80">نوع</th>
+                                <th class="text-right py-3 px-4 text-amber-200/80">مبلغ</th>
+                                <th class="text-right py-3 px-4 text-amber-200/80">تاریخ</th>
+                                <th class="text-right py-3 px-4 text-amber-200/80">وضعیت</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-amber-500/10">
+                                <td class="py-3 px-4 text-amber-200">#12345</td>
+                                <td class="py-3 px-4 text-amber-200">علی محمدی</td>
+                                <td class="py-3 px-4 text-amber-200">خرید سرویس</td>
+                                <td class="py-3 px-4 text-amber-200">250,000 تومان</td>
+                                <td class="py-3 px-4 text-amber-200">1402/10/15</td>
+                                <td class="py-3 px-4">
+                                    <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">موفق</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-amber-500/10">
+                                <td class="py-3 px-4 text-amber-200">#12344</td>
+                                <td class="py-3 px-4 text-amber-200">رضا احمدی</td>
+                                <td class="py-3 px-4 text-amber-200">تمدید</td>
+                                <td class="py-3 px-4 text-amber-200">180,000 تومان</td>
+                                <td class="py-3 px-4 text-amber-200">1402/10/15</td>
+                                <td class="py-3 px-4">
+                                    <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">موفق</span>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-amber-500/10">
+                                <td class="py-3 px-4 text-amber-200">#12343</td>
+                                <td class="py-3 px-4 text-amber-200">مریم حسینی</td>
+                                <td class="py-3 px-4 text-amber-200">افزایش حجم</td>
+                                <td class="py-3 px-4 text-amber-200">100,000 تومان</td>
+                                <td class="py-3 px-4 text-amber-200">1402/10/14</td>
+                                <td class="py-3 px-4">
+                                    <span class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm">ناموفق</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش دعوت به عمل -->
+        <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-amber-500/30 to-red-500/30 rounded-3xl blur-xl opacity-30 group-hover:opacity-40 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-amber-900/80 to-red-900/80 p-12 rounded-3xl backdrop-blur-xl border border-white/10 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">نیاز به گزارش سفارشی دارید؟</h2>
+                <p class="text-xl text-amber-200/80 mb-8 max-w-2xl mx-auto">
+                    می‌توانید گزارش‌های سفارشی با فیلترها و معیارهای مورد نظر خود ایجاد کنید
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-amber-500 to-red-500 rounded-xl hover:from-amber-600 hover:to-red-600 transform hover:scale-105 transition-all duration-300">
+                        ایجاد گزارش سفارشی
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </a>
+                    <a href="{% url 'catalog:docs' %}" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white border-2 border-amber-500/50 rounded-xl hover:bg-amber-500/10 transform hover:scale-105 transition-all duration-300">
+                        راهنمای گزارش‌گیری
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .perspective {
+            perspective: 2000px;
+        }
+
+        .animate-title {
+            animation: title-reveal 1s ease-out forwards;
+        }
+
+        .animate-subtitle {
+            animation: subtitle-reveal 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes title-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtitle-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</div>
+{% endblock %} 

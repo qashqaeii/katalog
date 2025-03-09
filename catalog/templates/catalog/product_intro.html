@@ -1,0 +1,280 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}V2Bot - معرفی محصول{% endblock %}
+
+{% block content %}
+<div class="min-h-screen relative overflow-hidden py-20">
+    <!-- هدر صفحه -->
+    <div class="container mx-auto px-4 mb-16">
+        <div class="text-center relative">
+            <!-- عنوان اصلی با افکت ویژه -->
+            <div class="relative inline-block">
+                <h1 class="text-5xl font-display bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-transparent bg-clip-text mb-6">
+                    معرفی جامع V2Bot
+                </h1>
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500 blur-xl opacity-20 animate-pulse"></div>
+            </div>
+
+            <!-- توضیح کوتاه -->
+            <p class="text-lg text-gray-300/80 max-w-3xl mx-auto mb-12">
+                پیشرفته‌ترین ربات مدیریت سرویس‌های V2RAY با امکانات منحصر به فرد و رابط کاربری هوشمند
+            </p>
+        </div>
+    </div>
+
+    <!-- بخش ویژگی‌های اصلی -->
+    <div class="container mx-auto px-4 mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- کارت ویژگی 1 -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-3xl blur-xl transition-all duration-500 group-hover:blur-2xl"></div>
+                <div class="relative bg-[#0A0F1C]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-indigo-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <!-- آیکون -->
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-500 p-0.5 mb-6">
+                            <div class="w-full h-full rounded-2xl bg-[#0A0F1C] flex items-center justify-center">
+                                <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-4">امنیت پیشرفته</h3>
+                        <p class="text-gray-300/80 mb-6">بهره‌گیری از جدیدترین پروتکل‌های امنیتی و رمزنگاری پیشرفته برای حفظ حریم خصوصی کاربران</p>
+                        
+                        <!-- لیست ویژگی‌ها -->
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>رمزنگاری چند لایه</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>پروتکل‌های امن و به‌روز</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>محافظت در برابر حملات</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- کارت ویژگی 2 -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-3xl blur-xl transition-all duration-500 group-hover:blur-2xl"></div>
+                <div class="relative bg-[#0A0F1C]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-pink-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <!-- آیکون -->
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 p-0.5 mb-6">
+                            <div class="w-full h-full rounded-2xl bg-[#0A0F1C] flex items-center justify-center">
+                                <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-4">عملکرد سریع</h3>
+                        <p class="text-gray-300/80 mb-6">بهینه‌سازی شده برای ارائه بهترین عملکرد با کمترین تأخیر و بالاترین سرعت</p>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>بهینه‌سازی خودکار</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>پاسخگویی سریع</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>مدیریت منابع هوشمند</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- کارت ویژگی 3 -->
+            <div class="group relative">
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 rounded-3xl blur-xl transition-all duration-500 group-hover:blur-2xl"></div>
+                <div class="relative bg-[#0A0F1C]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 transition-all duration-500 hover:transform hover:scale-[1.02] hover:shadow-2xl">
+                    <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/5 to-teal-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative z-10">
+                        <!-- آیکون -->
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-500 p-0.5 mb-6">
+                            <div class="w-full h-full rounded-2xl bg-[#0A0F1C] flex items-center justify-center">
+                                <svg class="w-8 h-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-4">قابلیت تنظیم</h3>
+                        <p class="text-gray-300/80 mb-6">امکان شخصی‌سازی تمام جنبه‌های سیستم مطابق با نیازهای خاص شما</p>
+                        
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>تنظیمات پیشرفته</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>قابلیت شخصی‌سازی</span>
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300/70">
+                                <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>پروفایل‌های متنوع</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش ویژگی‌های پیشرفته -->
+    <div class="container mx-auto px-4 mb-24">
+        <div class="relative bg-[#0A0F1C]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-12">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-pink-500/5 rounded-3xl"></div>
+            
+            <div class="relative z-10">
+                <h2 class="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text">
+                    ویژگی‌های پیشرفته
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- ویژگی 1 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-500 p-0.5">
+                                <div class="w-full h-full rounded-xl bg-[#0A0F1C] flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2">رمزنگاری پیشرفته</h3>
+                            <p class="text-gray-300/70">استفاده از الگوریتم‌های رمزنگاری قوی برای محافظت از داده‌های کاربران</p>
+                        </div>
+                    </div>
+
+                    <!-- ویژگی 2 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 p-0.5">
+                                <div class="w-full h-full rounded-xl bg-[#0A0F1C] flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2">گزارش‌گیری هوشمند</h3>
+                            <p class="text-gray-300/70">ارائه گزارش‌های دقیق و جامع از عملکرد سیستم و فعالیت‌های کاربران</p>
+                        </div>
+                    </div>
+
+                    <!-- ویژگی 3 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 p-0.5">
+                                <div class="w-full h-full rounded-xl bg-[#0A0F1C] flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2">بهینه‌سازی خودکار</h3>
+                            <p class="text-gray-300/70">تنظیم خودکار پارامترها برای دستیابی به بهترین عملکرد</p>
+                        </div>
+                    </div>
+
+                    <!-- ویژگی 4 -->
+                    <div class="flex gap-6">
+                        <div class="flex-shrink-0">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 p-0.5">
+                                <div class="w-full h-full rounded-xl bg-[#0A0F1C] flex items-center justify-center">
+                                    <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-white mb-2">مدیریت کاربران</h3>
+                            <p class="text-gray-300/70">سیستم پیشرفته مدیریت کاربران با سطوح دسترسی مختلف</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- بخش دعوت به عمل -->
+    <div class="container mx-auto px-4">
+        <div class="relative bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 rounded-3xl p-12 overflow-hidden">
+            <div class="absolute inset-0 backdrop-blur-xl"></div>
+            
+            <!-- افکت‌های پس‌زمینه -->
+            <div class="absolute inset-0">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl"></div>
+                <div class="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl"></div>
+            </div>
+
+            <div class="relative z-10 text-center">
+                <h2 class="text-3xl font-bold mb-6">آماده شروع هستید؟</h2>
+                <p class="text-gray-300/80 mb-8 max-w-2xl mx-auto">
+                    همین حالا V2Bot را نصب کنید و از تمامی امکانات پیشرفته آن بهره‌مند شوید
+                </p>
+
+                <!-- دکمه شروع -->
+                <a href="{% url 'catalog:download' %}" class="group relative inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:shadow-[0_0_40px_8px_rgba(99,102,241,0.5)] transform hover:scale-105">
+                    <span class="relative z-10">دانلود و نصب</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                    </svg>
+                    
+                    <!-- افکت موج -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-20 transition-opacity duration-500"></div>
+                </a>
+
+                <!-- دکمه مستندات -->
+                <a href="{% url 'catalog:docs' %}" class="group relative inline-flex items-center gap-2 px-8 py-4 bg-transparent border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:border-white/40 hover:bg-white/5 mr-4">
+                    <span class="relative z-10">مشاهده مستندات</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

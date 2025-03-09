@@ -1,0 +1,210 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}V2Bot - کد QR{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 py-8">
+    <!-- هدر صفحه -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-display text-white mb-4 relative inline-block">
+            <span class="absolute -inset-2 bg-gradient-to-r from-blue-500/20 to-blue-400/20 blur-xl"></span>
+            <span class="relative">راه‌های استفاده</span>
+        </h1>
+    </div>
+
+    <!-- کارت QR -->
+    <div class="max-w-4xl mx-auto bg-gradient-to-br from-blue-900/40 to-blue-800/40 rounded-3xl p-8 backdrop-blur-xl border border-blue-500/10 mb-12 transform hover:scale-[1.02] transition-all duration-300">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <h2 class="text-2xl font-display text-white mb-6">QR Code</h2>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3 text-blue-100">
+                        <div class="flex-none w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <span>با دوربین گوشی کد را اسکن کنید</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-blue-100">
+                        <div class="flex-none w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <span>از طریق تلگرام کد را اسکن نمایید</span>
+                    </li>
+                    <li class="flex items-center gap-3 text-blue-100">
+                        <div class="flex-none w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <span>به صورت خودکار به ربات متصل شوید</span>
+                    </li>
+                </ul>
+                <div class="flex gap-4 mt-8">
+                    <button onclick="downloadQR()" class="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-500 rounded-xl text-white font-medium hover:shadow-lg hover:shadow-blue-500/25 transform hover:-translate-y-0.5 transition-all duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>دانلود کد QR</span>
+                    </button>
+                    <button onclick="copyBotLink()" class="flex items-center gap-2 px-6 py-3 bg-blue-500/10 rounded-xl text-blue-300 font-medium hover:bg-blue-500/20 transform hover:-translate-y-0.5 transition-all duration-200">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        </svg>
+                        <span>کپی لینک</span>
+                    </button>
+                </div>
+            </div>
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-gradient-to-r from-blue-500 to-blue-300 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500 animate-pulse-slow"></div>
+                <div class="relative aspect-square bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl p-4 backdrop-blur-xl border border-blue-500/20">
+                    <div class="absolute inset-0.5 bg-gradient-to-br from-blue-500/20 to-blue-300/20 rounded-xl"></div>
+                    <img src="{% static 'catalog/images/qr-code.png' %}" alt="QR Code" class="w-full h-full object-contain relative z-10">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- کارت‌های راهنما -->
+    <div class="grid md:grid-cols-3 gap-6">
+        <!-- کارت شروع استفاده -->
+        <div class="group relative transform hover:scale-105 transition-all duration-300">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-500 to-blue-400 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-all duration-500"></div>
+            <div class="relative h-full bg-gradient-to-br from-blue-900/40 to-blue-800/40 rounded-xl p-6 backdrop-blur-xl border border-blue-500/10">
+                <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mt-4 mb-3">شروع استفاده</h3>
+                <p class="text-blue-100/80">از امکانات ربات استفاده کنید</p>
+            </div>
+        </div>
+
+        <!-- کارت اتصال خودکار -->
+        <div class="group relative transform hover:scale-105 transition-all duration-300">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-blue-300 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-all duration-500"></div>
+            <div class="relative h-full bg-gradient-to-br from-blue-900/40 to-blue-800/40 rounded-xl p-6 backdrop-blur-xl border border-blue-500/10">
+                <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mt-4 mb-3">اتصال خودکار</h3>
+                <p class="text-blue-100/80">به صورت خودکار به ربات متصل می‌شوید</p>
+            </div>
+        </div>
+
+        <!-- کارت اسکن کد -->
+        <div class="group relative transform hover:scale-105 transition-all duration-300">
+            <div class="absolute -inset-1 bg-gradient-to-r from-blue-300 to-blue-200 rounded-2xl blur opacity-25 group-hover:opacity-50 transition-all duration-500"></div>
+            <div class="relative h-full bg-gradient-to-br from-blue-900/40 to-blue-800/40 rounded-xl p-6 backdrop-blur-xl border border-blue-500/10">
+                <div class="absolute top-3 right-3 w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-white mt-4 mb-3">اسکن کد</h3>
+                <p class="text-blue-100/80">دوربین گوشی خود را روی کد QR قرار دهید</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+
+    .animate-pulse-glow {
+        animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* استایل برای نوتیفیکیشن */
+    .notification {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 1rem 2rem;
+        border-radius: 0.75rem;
+        background: rgba(59, 130, 246, 0.9);
+        color: white;
+        font-weight: 500;
+        backdrop-filter: blur(8px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 50;
+    }
+
+    .notification.show {
+        opacity: 1;
+    }
+</style>
+
+<script>
+    // تابع دانلود کد QR
+    async function downloadQR() {
+        try {
+            const qrImage = document.querySelector('img[alt="QR Code"]');
+            const response = await fetch(qrImage.src);
+            const blob = await response.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'v2bot-qr-code.png';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+            showNotification('کد QR با موفقیت دانلود شد');
+        } catch (error) {
+            showNotification('خطا در دانلود کد QR', true);
+        }
+    }
+
+    // تابع کپی لینک
+    async function copyBotLink() {
+        const botLink = 'https://t.me/v2bot'; // لینک ربات را اینجا قرار دهید
+        try {
+            await navigator.clipboard.writeText(botLink);
+            showNotification('لینک با موفقیت کپی شد');
+        } catch (error) {
+            showNotification('خطا در کپی لینک', true);
+        }
+    }
+
+    // تابع نمایش نوتیفیکیشن
+    function showNotification(message, isError = false) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = message;
+        
+        if (isError) {
+            notification.style.background = 'rgba(239, 68, 68, 0.9)';
+        }
+
+        document.body.appendChild(notification);
+        setTimeout(() => notification.classList.add('show'), 100);
+
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => document.body.removeChild(notification), 300);
+        }, 3000);
+    }
+</script>
+{% endblock %} 

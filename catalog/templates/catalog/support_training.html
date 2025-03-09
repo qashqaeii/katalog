@@ -1,0 +1,265 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}پشتیبانی و آموزش - V2Bot{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
+    <!-- پس‌زمینه متحرک -->
+    <div class="absolute inset-0">
+        <div class="absolute w-full h-full">
+            <div class="absolute w-[2000px] h-[2000px] bg-gradient-to-r from-emerald-600/30 via-teal-600/30 to-cyan-600/30 rounded-full blur-[100px] -top-[500px] -right-[500px] animate-pulse-slow mix-blend-overlay"></div>
+            <div class="absolute w-[1800px] h-[1800px] bg-gradient-to-r from-cyan-500/20 via-teal-500/20 to-emerald-500/20 rounded-full blur-[120px] top-[100px] -left-[300px] animate-pulse-reverse mix-blend-overlay"></div>
+        </div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="relative z-10 container mx-auto px-4 py-16">
+        <!-- هدر صفحه -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-transparent bg-clip-text mb-6 font-display animate-title">
+                پشتیبانی و آموزش V2Bot
+            </h1>
+            <p class="text-xl text-emerald-200/80 max-w-3xl mx-auto animate-subtitle">
+                راهنمایی، پشتیبانی و آموزش‌های جامع برای استفاده بهینه از ربات
+            </p>
+        </div>
+
+        <!-- بخش‌های اصلی -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <!-- راه‌های ارتباطی -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-emerald-900/50 to-cyan-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl p-3">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">راه‌های ارتباطی</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-emerald-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">پشتیبانی تلگرام</h3>
+                            <p class="text-emerald-200/80 mb-4">پشتیبانی 24/7 از طریق ربات تلگرام</p>
+                            <a href="https://t.me/v2bot_support" class="inline-flex items-center px-6 py-3 text-white bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl hover:from-emerald-600 hover:to-cyan-600 transition-all duration-300">
+                                ارتباط با پشتیبانی
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <div class="bg-emerald-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">گروه‌های پشتیبانی</h3>
+                            <div class="space-y-4">
+                                <a href="#" class="flex items-center justify-between p-4 bg-emerald-900/30 rounded-lg hover:bg-emerald-800/30 transition-all duration-300">
+                                    <span class="text-emerald-200">گروه عمومی کاربران</span>
+                                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="flex items-center justify-between p-4 bg-emerald-900/30 rounded-lg hover:bg-emerald-800/30 transition-all duration-300">
+                                    <span class="text-emerald-200">گروه VIP</span>
+                                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- مرکز آموزش -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-emerald-900/50 to-cyan-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl p-3">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">مرکز آموزش</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-emerald-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">ویدیوهای آموزشی</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="bg-emerald-900/30 p-4 rounded-lg">
+                                    <div class="aspect-video bg-emerald-800/30 rounded-lg mb-3"></div>
+                                    <h4 class="text-white font-medium mb-2">نصب و راه‌اندازی اولیه</h4>
+                                    <p class="text-emerald-200/80 text-sm">آموزش کامل نصب و راه‌اندازی ربات</p>
+                                </div>
+                                <div class="bg-emerald-900/30 p-4 rounded-lg">
+                                    <div class="aspect-video bg-emerald-800/30 rounded-lg mb-3"></div>
+                                    <h4 class="text-white font-medium mb-2">تنظیمات پیشرفته</h4>
+                                    <p class="text-emerald-200/80 text-sm">آموزش تنظیمات و قابلیت‌های پیشرفته</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">مستندات و راهنما</h3>
+                            <div class="space-y-4">
+                                <a href="#" class="flex items-center justify-between p-4 bg-emerald-900/30 rounded-lg hover:bg-emerald-800/30 transition-all duration-300">
+                                    <div>
+                                        <h4 class="text-white font-medium mb-1">راهنمای کاربری</h4>
+                                        <p class="text-emerald-200/80 text-sm">مستندات کامل استفاده از ربات</p>
+                                    </div>
+                                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </a>
+                                <a href="#" class="flex items-center justify-between p-4 bg-emerald-900/30 rounded-lg hover:bg-emerald-800/30 transition-all duration-300">
+                                    <div>
+                                        <h4 class="text-white font-medium mb-1">سوالات متداول</h4>
+                                        <p class="text-emerald-200/80 text-sm">پاسخ به سوالات رایج کاربران</p>
+                                    </div>
+                                    <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- سوالات متداول -->
+        <div class="relative group mb-16">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-cyan-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-emerald-900/50 to-cyan-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-emerald-500 to-cyan-500 rounded-xl p-3">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-bold text-white">سوالات متداول</h2>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-emerald-900/30 p-6 rounded-xl">
+                        <button class="flex items-center justify-between w-full text-left">
+                            <span class="text-lg font-semibold text-white">چگونه می‌توانم ربات را نصب کنم؟</span>
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="mt-4 text-emerald-200/80">
+                            برای نصب ربات، ابتدا فایل‌های مورد نیاز را از گیت‌هاب دانلود کرده و سپس مراحل نصب را طبق مستندات دنبال کنید.
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-900/30 p-6 rounded-xl">
+                        <button class="flex items-center justify-between w-full text-left">
+                            <span class="text-lg font-semibold text-white">چگونه می‌توانم به گروه VIP دسترسی پیدا کنم؟</span>
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="mt-4 text-emerald-200/80">
+                            برای دسترسی به گروه VIP، باید اشتراک ویژه خریداری کنید. پس از خرید اشتراک، لینک گروه به صورت خودکار برای شما ارسال خواهد شد.
+                        </div>
+                    </div>
+
+                    <div class="bg-emerald-900/30 p-6 rounded-xl">
+                        <button class="flex items-center justify-between w-full text-left">
+                            <span class="text-lg font-semibold text-white">آیا امکان ارتقای حساب کاربری وجود دارد؟</span>
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="mt-4 text-emerald-200/80">
+                            بله، شما می‌توانید در هر زمان حساب کاربری خود را به نسخه VIP ارتقا دهید و از امکانات ویژه استفاده کنید.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش دعوت به عمل -->
+        <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/30 to-cyan-500/30 rounded-3xl blur-xl opacity-30 group-hover:opacity-40 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-emerald-900/80 to-cyan-900/80 p-12 rounded-3xl backdrop-blur-xl border border-white/10 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">هنوز سوالی دارید؟</h2>
+                <p class="text-xl text-emerald-200/80 mb-8 max-w-2xl mx-auto">
+                    تیم پشتیبانی ما 24 ساعته آماده پاسخگویی به سوالات شما است
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-xl hover:from-emerald-600 hover:to-cyan-600 transform hover:scale-105 transition-all duration-300">
+                        تماس با پشتیبانی
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white border-2 border-emerald-500/50 rounded-xl hover:bg-emerald-500/10 transform hover:scale-105 transition-all duration-300">
+                        مشاهده سوالات متداول
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .perspective {
+            perspective: 2000px;
+        }
+
+        .animate-title {
+            animation: title-reveal 1s ease-out forwards;
+        }
+
+        .animate-subtitle {
+            animation: subtitle-reveal 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes title-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtitle-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</div>
+{% endblock %} 

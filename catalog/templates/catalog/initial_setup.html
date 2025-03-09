@@ -1,0 +1,250 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}راه‌اندازی اولیه - V2Bot{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
+    <!-- پس‌زمینه متحرک -->
+    <div class="absolute inset-0">
+        <div class="absolute w-full h-full">
+            <div class="absolute w-[2000px] h-[2000px] bg-gradient-to-r from-blue-600/30 via-purple-600/30 to-pink-600/30 rounded-full blur-[100px] -top-[500px] -right-[500px] animate-pulse-slow mix-blend-overlay"></div>
+            <div class="absolute w-[1800px] h-[1800px] bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-blue-500/20 rounded-full blur-[120px] top-[100px] -left-[300px] animate-pulse-reverse mix-blend-overlay"></div>
+        </div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="relative z-10 container mx-auto px-4 py-16">
+        <!-- هدر صفحه -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 text-transparent bg-clip-text mb-6 font-display animate-title">
+                راه‌اندازی اولیه V2Bot
+            </h1>
+            <p class="text-xl text-blue-200/80 max-w-3xl mx-auto animate-subtitle">
+                راهنمای گام به گام نصب و راه‌اندازی ربات مدیریت سرویس‌های V2RAY
+            </p>
+        </div>
+
+        <!-- مراحل نصب -->
+        <div class="max-w-4xl mx-auto mb-24">
+            <!-- گام 1: آماده‌سازی سرور -->
+            <div class="relative group mb-12">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-blue-900/50 to-pink-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-blue-500 to-pink-500 rounded-xl p-3">
+                            <span class="text-2xl font-bold text-white">1</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">آماده‌سازی سرور</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-blue-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">به‌روزرسانی سیستم</h3>
+                            <div class="bg-gray-900 p-4 rounded-lg mb-4">
+                                <code class="text-blue-300">
+                                    sudo apt update && sudo apt upgrade -y
+                                </code>
+                            </div>
+                            <p class="text-blue-200/80">اطمینان از به‌روز بودن سیستم‌عامل و بسته‌های نصب شده</p>
+                        </div>
+                        
+                        <div class="bg-blue-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">نصب پیش‌نیازها</h3>
+                            <div class="bg-gray-900 p-4 rounded-lg mb-4">
+                                <code class="text-blue-300">
+                                    sudo apt install python3 python3-pip docker.io -y
+                                </code>
+                            </div>
+                            <p class="text-blue-200/80">نصب Python، pip و Docker مورد نیاز برای اجرای ربات</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- گام 2: دریافت و نصب ربات -->
+            <div class="relative group mb-12">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-blue-900/50 to-pink-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-blue-500 to-pink-500 rounded-xl p-3">
+                            <span class="text-2xl font-bold text-white">2</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">دریافت و نصب ربات</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-blue-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">کلون کردن مخزن</h3>
+                            <div class="bg-gray-900 p-4 rounded-lg mb-4">
+                                <code class="text-blue-300">
+                                    git clone https://github.com/v2bot/v2bot.git<br>
+                                    cd v2bot
+                                </code>
+                            </div>
+                            <p class="text-blue-200/80">دریافت آخرین نسخه کد ربات از مخزن گیت‌هاب</p>
+                        </div>
+                        
+                        <div class="bg-blue-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">نصب وابستگی‌ها</h3>
+                            <div class="bg-gray-900 p-4 rounded-lg mb-4">
+                                <code class="text-blue-300">
+                                    pip3 install -r requirements.txt
+                                </code>
+                            </div>
+                            <p class="text-blue-200/80">نصب تمامی کتابخانه‌های مورد نیاز پایتون</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- گام 3: پیکربندی ربات -->
+            <div class="relative group mb-12">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-blue-900/50 to-pink-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-blue-500 to-pink-500 rounded-xl p-3">
+                            <span class="text-2xl font-bold text-white">3</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">پیکربندی ربات</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-blue-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">تنظیم فایل پیکربندی</h3>
+                            <div class="bg-gray-900 p-4 rounded-lg mb-4">
+                                <code class="text-blue-300">
+                                    cp config.example.yml config.yml<br>
+                                    nano config.yml
+                                </code>
+                            </div>
+                            <div class="space-y-4 mt-4">
+                                <p class="text-blue-200/80">تنظیمات ضروری در فایل پیکربندی:</p>
+                                <ul class="list-disc list-inside space-y-2 text-blue-200/80">
+                                    <li>توکن ربات تلگرام</li>
+                                    <li>اطلاعات اتصال به پنل سنایی</li>
+                                    <li>تنظیمات پایگاه داده</li>
+                                    <li>آدرس‌های API و Webhook</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- گام 4: راه‌اندازی ربات -->
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-pink-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative bg-gradient-to-br from-blue-900/50 to-pink-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-gradient-to-br from-blue-500 to-pink-500 rounded-xl p-3">
+                            <span class="text-2xl font-bold text-white">4</span>
+                        </div>
+                        <h2 class="text-2xl font-bold text-white">راه‌اندازی ربات</h2>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-blue-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">اجرای ربات</h3>
+                            <div class="bg-gray-900 p-4 rounded-lg mb-4">
+                                <code class="text-blue-300">
+                                    python3 bot.py
+                                </code>
+                            </div>
+                            <p class="text-blue-200/80">پس از اجرای موفق، ربات آماده دریافت دستورات خواهد بود</p>
+                        </div>
+                        
+                        <div class="bg-blue-900/30 p-6 rounded-xl">
+                            <h3 class="text-lg font-semibold text-white mb-4">تست عملکرد</h3>
+                            <div class="space-y-4">
+                                <p class="text-blue-200/80">برای تست عملکرد ربات:</p>
+                                <ul class="list-disc list-inside space-y-2 text-blue-200/80">
+                                    <li>به ربات در تلگرام پیام /start ارسال کنید</li>
+                                    <li>از منوی اصلی، گزینه "وضعیت سیستم" را انتخاب کنید</li>
+                                    <li>اطمینان حاصل کنید که تمام سرویس‌ها در حال اجرا هستند</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش دعوت به عمل -->
+        <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-pink-500/30 rounded-3xl blur-xl opacity-30 group-hover:opacity-40 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-blue-900/80 to-pink-900/80 p-12 rounded-3xl backdrop-blur-xl border border-white/10 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">نیاز به راهنمایی بیشتر دارید؟</h2>
+                <p class="text-xl text-blue-200/80 mb-8 max-w-2xl mx-auto">
+                    برای اطلاعات بیشتر و راهنمایی تکمیلی، مستندات ما را مطالعه کنید یا با تیم پشتیبانی تماس بگیرید
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="{% url 'catalog:docs' %}" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-blue-500 to-pink-500 rounded-xl hover:from-blue-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300">
+                        مستندات تکمیلی
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </a>
+                    <a href="{% url 'catalog:support_training' %}" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white border-2 border-blue-500/50 rounded-xl hover:bg-blue-500/10 transform hover:scale-105 transition-all duration-300">
+                        تماس با پشتیبانی
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .perspective {
+            perspective: 2000px;
+        }
+
+        .animate-title {
+            animation: title-reveal 1s ease-out forwards;
+        }
+
+        .animate-subtitle {
+            animation: subtitle-reveal 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes title-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtitle-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</div>
+{% endblock %} 

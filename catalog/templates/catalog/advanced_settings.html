@@ -1,0 +1,284 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}تنظیمات پیشرفته - V2Bot{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
+    <!-- پس‌زمینه متحرک -->
+    <div class="absolute inset-0">
+        <div class="absolute w-full h-full">
+            <div class="absolute w-[2000px] h-[2000px] bg-gradient-to-r from-violet-600/30 via-fuchsia-600/30 to-rose-600/30 rounded-full blur-[100px] -top-[500px] -right-[500px] animate-pulse-slow mix-blend-overlay"></div>
+            <div class="absolute w-[1800px] h-[1800px] bg-gradient-to-r from-rose-500/20 via-fuchsia-500/20 to-violet-500/20 rounded-full blur-[120px] top-[100px] -left-[300px] animate-pulse-reverse mix-blend-overlay"></div>
+        </div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="relative z-10 container mx-auto px-4 py-16">
+        <!-- هدر صفحه -->
+        <div class="text-center mb-16">
+            <h1 class="text-5xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-400 to-rose-400 text-transparent bg-clip-text mb-6 font-display animate-title">
+                تنظیمات پیشرفته V2Bot
+            </h1>
+            <p class="text-xl text-violet-200/80 max-w-3xl mx-auto animate-subtitle">
+                پیکربندی و تنظیمات پیشرفته برای بهینه‌سازی عملکرد ربات
+            </p>
+        </div>
+
+        <!-- بخش‌های تنظیمات -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
+            <!-- تنظیمات امنیتی -->
+            <div class="space-y-8">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-rose-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-violet-900/50 to-rose-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="bg-gradient-to-br from-violet-500 to-rose-500 rounded-xl p-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-white">تنظیمات امنیتی</h2>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-violet-900/30 p-6 rounded-xl">
+                                <h3 class="text-lg font-semibold text-white mb-4">احراز هویت دو مرحله‌ای</h3>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-violet-200/80">فعال‌سازی احراز هویت دو مرحله‌ای</span>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" class="sr-only peer">
+                                        <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-500"></div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-violet-900/30 p-6 rounded-xl">
+                                <h3 class="text-lg font-semibold text-white mb-4">محدودیت IP</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-violet-200/80">فعال‌سازی محدودیت IP</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer">
+                                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-500"></div>
+                                        </label>
+                                    </div>
+                                    <input type="text" placeholder="IP های مجاز (با کاما جدا کنید)" class="w-full bg-violet-900/30 border border-violet-500/30 rounded-lg px-4 py-2 text-violet-200 placeholder-violet-400/50 focus:outline-none focus:border-violet-500">
+                                </div>
+                            </div>
+
+                            <div class="bg-violet-900/30 p-6 rounded-xl">
+                                <h3 class="text-lg font-semibold text-white mb-4">سیاست‌های رمز عبور</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-violet-200/80">حداقل طول رمز: 8 کاراکتر</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-500"></div>
+                                        </label>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-violet-200/80">نیاز به حروف بزرگ و کوچک</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-500"></div>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تنظیمات سیستم -->
+            <div class="space-y-8">
+                <div class="relative group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-rose-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-violet-900/50 to-rose-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="bg-gradient-to-br from-violet-500 to-rose-500 rounded-xl p-3">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-2xl font-bold text-white">تنظیمات سیستم</h2>
+                        </div>
+                        <div class="space-y-6">
+                            <div class="bg-violet-900/30 p-6 rounded-xl">
+                                <h3 class="text-lg font-semibold text-white mb-4">مدیریت منابع</h3>
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-violet-200/80 mb-2">حداکثر تعداد کاربران همزمان</label>
+                                        <input type="number" value="1000" class="w-full bg-violet-900/30 border border-violet-500/30 rounded-lg px-4 py-2 text-violet-200 focus:outline-none focus:border-violet-500">
+                                    </div>
+                                    <div>
+                                        <label class="block text-violet-200/80 mb-2">محدودیت پهنای باند (GB)</label>
+                                        <input type="number" value="100" class="w-full bg-violet-900/30 border border-violet-500/30 rounded-lg px-4 py-2 text-violet-200 focus:outline-none focus:border-violet-500">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-violet-900/30 p-6 rounded-xl">
+                                <h3 class="text-lg font-semibold text-white mb-4">زمان‌بندی بک‌آپ</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-violet-200/80">بک‌آپ خودکار روزانه</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-500"></div>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="block text-violet-200/80 mb-2">زمان بک‌آپ</label>
+                                        <input type="time" value="02:00" class="w-full bg-violet-900/30 border border-violet-500/30 rounded-lg px-4 py-2 text-violet-200 focus:outline-none focus:border-violet-500">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-violet-900/30 p-6 rounded-xl">
+                                <h3 class="text-lg font-semibold text-white mb-4">تنظیمات لاگ</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-violet-200/80">ثبت لاگ تمام عملیات</span>
+                                        <label class="relative inline-flex items-center cursor-pointer">
+                                            <input type="checkbox" class="sr-only peer" checked>
+                                            <div class="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-violet-500"></div>
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <label class="block text-violet-200/80 mb-2">مدت زمان نگهداری لاگ‌ها (روز)</label>
+                                        <input type="number" value="30" class="w-full bg-violet-900/30 border border-violet-500/30 rounded-lg px-4 py-2 text-violet-200 focus:outline-none focus:border-violet-500">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- تنظیمات پیشرفته اضافی -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-rose-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative h-full bg-gradient-to-br from-violet-900/50 to-rose-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="bg-gradient-to-br from-violet-500 to-rose-500 rounded-xl p-3 w-12 h-12 mb-6">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">بهینه‌سازی عملکرد</h3>
+                    <p class="text-violet-200/80">تنظیمات پیشرفته برای بهبود عملکرد و سرعت سیستم</p>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-rose-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative h-full bg-gradient-to-br from-violet-900/50 to-rose-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="bg-gradient-to-br from-violet-500 to-rose-500 rounded-xl p-3 w-12 h-12 mb-6">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">امنیت پیشرفته</h3>
+                    <p class="text-violet-200/80">تنظیمات پیشرفته برای افزایش امنیت و حفاظت از داده‌ها</p>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-rose-500/20 rounded-2xl blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative h-full bg-gradient-to-br from-violet-900/50 to-rose-900/50 p-8 rounded-2xl backdrop-blur-xl border border-white/10">
+                    <div class="bg-gradient-to-br from-violet-500 to-rose-500 rounded-xl p-3 w-12 h-12 mb-6">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">گزارش‌گیری پیشرفته</h3>
+                    <p class="text-violet-200/80">تنظیمات پیشرفته برای سیستم گزارش‌گیری و تحلیل</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش دعوت به عمل -->
+        <div class="relative group">
+            <div class="absolute inset-0 bg-gradient-to-r from-violet-500/30 to-rose-500/30 rounded-3xl blur-xl opacity-30 group-hover:opacity-40 transition-opacity duration-500"></div>
+            <div class="relative bg-gradient-to-br from-violet-900/80 to-rose-900/80 p-12 rounded-3xl backdrop-blur-xl border border-white/10 text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">نیاز به راهنمایی دارید؟</h2>
+                <p class="text-xl text-violet-200/80 mb-8 max-w-2xl mx-auto">
+                    برای اطلاعات بیشتر درباره تنظیمات پیشرفته، مستندات ما را مطالعه کنید یا با تیم پشتیبانی تماس بگیرید
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="{% url 'catalog:docs' %}" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-gradient-to-r from-violet-500 to-rose-500 rounded-xl hover:from-violet-600 hover:to-rose-600 transform hover:scale-105 transition-all duration-300">
+                        مستندات تکمیلی
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </a>
+                    <a href="{% url 'catalog:support_training' %}" class="inline-flex items-center px-8 py-4 text-lg font-medium text-white border-2 border-violet-500/50 rounded-xl hover:bg-violet-500/10 transform hover:scale-105 transition-all duration-300">
+                        تماس با پشتیبانی
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
+        }
+
+        .animate-float-slow {
+            animation: float-slow 6s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .perspective {
+            perspective: 2000px;
+        }
+
+        .animate-title {
+            animation: title-reveal 1s ease-out forwards;
+        }
+
+        .animate-subtitle {
+            animation: subtitle-reveal 1s ease-out 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes title-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtitle-reveal {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</div>
+{% endblock %} 

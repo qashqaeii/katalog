@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}V2Bot{% endblock %}</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <!-- فونت وزیر -->
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
@@ -79,6 +82,7 @@
             backdrop-filter: blur(10px);
             border-top: 1px solid rgba(59, 130, 246, 0.1);
             box-shadow: 0 -4px 6px -1px rgba(59, 130, 246, 0.05);
+            width: 100%;
         }
 
         .nav-item {
@@ -140,7 +144,84 @@
                 -webkit-backdrop-filter: blur(16px);
             }
         }
+
+        /* تنظیمات جدید برای ریسپانسیو */
+        @media (max-width: 640px) {
+            .nav-button {
+                width: 12vw !important;
+                height: 12vw !important;
+                min-width: 48px;
+                min-height: 48px;
+                max-width: 56px;
+                max-height: 56px;
+            }
+
+            .nav-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .nav-gap {
+                gap: 0.5rem !important;
+            }
+
+            .nav-container {
+                padding: 0.5rem 1rem !important;
+            }
+        }
+
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .nav-button {
+                width: 14vw !important;
+                height: 14vw !important;
+                max-width: 64px;
+                max-height: 64px;
+            }
+
+            .nav-gap {
+                gap: 1.5rem !important;
+            }
+        }
+
+        /* بهبود انیمیشن‌ها */
+        .nav-button {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-button:active {
+            transform: scale(0.95) translateY(-1px);
+        }
+
+        @keyframes buttonPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.95); }
+            100% { transform: scale(1); }
+        }
+
+        .button-pop {
+            animation: buttonPop 0.3s ease-in-out;
+        }
+
+        /* اضافه کردن افکت‌های جدید */
+        .nav-glow {
+            position: absolute;
+            inset: -1px;
+            background: radial-gradient(circle at center, var(--glow-color, rgba(59, 130, 246, 0.5)), transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        .group:hover .nav-glow {
+            opacity: 0.15;
+        }
     </style>
+    <script>
+        $(document).ready(function() {
+            AOS.init();
+        });
+    </script>
 </head>
 <body class="font-vazir text-white">
     <main class="pb-28">
@@ -158,26 +239,19 @@
         
         <!-- لایه محتوا -->
         <div class="relative">
-            <div class="container mx-auto px-4 py-4">
-                <div class="flex justify-center items-center gap-10">
+            <div class="container mx-auto px-4 py-2 sm:py-4 nav-container">
+                <div class="flex justify-center items-center gap-3 sm:gap-6 md:gap-10 nav-gap">
                     <!-- دکمه خانه -->
                     <a href="{% url 'catalog:home' %}" class="group relative" title="خانه">
-                        <div class="w-16 h-16 relative">
-                            <!-- پس‌زمینه اصلی -->
+                        <div class="nav-button w-16 h-16 relative">
+                            <div class="nav-glow" style="--glow-color: rgba(59, 130, 246, 0.5)"></div>
                             <div class="absolute inset-0 bg-[#0A0F1C] bg-opacity-90 rounded-2xl"></div>
-                            
-                            <!-- لایه بلور -->
                             <div class="absolute inset-0 backdrop-blur-xl rounded-2xl"></div>
-                            
-                            <!-- حاشیه و افکت‌ها -->
                             <div class="absolute inset-0 rounded-2xl border border-white/10 shadow-lg overflow-hidden group-hover:-translate-y-2 transition-all duration-500">
-                                <!-- گرادیان متحرک -->
                                 <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
-                            
-                            <!-- آیکون -->
                             <div class="relative h-full flex items-center justify-center">
-                                <svg class="w-7 h-7 text-blue-100/80 group-hover:text-blue-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="nav-icon w-7 h-7 text-blue-100/80 group-hover:text-blue-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
                                 </svg>
                             </div>
@@ -186,14 +260,15 @@
 
                     <!-- دکمه گالری -->
                     <a href="{% url 'catalog:gallery' %}" class="group relative" title="گالری">
-                        <div class="w-16 h-16 relative">
+                        <div class="nav-button w-16 h-16 relative">
+                            <div class="nav-glow" style="--glow-color: rgba(168, 85, 247, 0.5)"></div>
                             <div class="absolute inset-0 bg-[#0A0F1C] bg-opacity-90 rounded-2xl"></div>
                             <div class="absolute inset-0 backdrop-blur-xl rounded-2xl"></div>
                             <div class="absolute inset-0 rounded-2xl border border-white/10 shadow-lg overflow-hidden group-hover:-translate-y-2 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                             <div class="relative h-full flex items-center justify-center">
-                                <svg class="w-7 h-7 text-purple-100/80 group-hover:text-purple-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="nav-icon w-7 h-7 text-purple-100/80 group-hover:text-purple-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                                 </svg>
                             </div>
@@ -202,14 +277,15 @@
 
                     <!-- دکمه اشتراک‌گذاری -->
                     <a href="{% url 'catalog:share' %}" class="group relative" title="اشتراک‌گذاری">
-                        <div class="w-16 h-16 relative">
+                        <div class="nav-button w-16 h-16 relative">
+                            <div class="nav-glow" style="--glow-color: rgba(16, 185, 129, 0.5)"></div>
                             <div class="absolute inset-0 bg-[#0A0F1C] bg-opacity-90 rounded-2xl"></div>
                             <div class="absolute inset-0 backdrop-blur-xl rounded-2xl"></div>
                             <div class="absolute inset-0 rounded-2xl border border-white/10 shadow-lg overflow-hidden group-hover:-translate-y-2 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-teal-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                             <div class="relative h-full flex items-center justify-center">
-                                <svg class="w-7 h-7 text-emerald-100/80 group-hover:text-emerald-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="nav-icon w-7 h-7 text-emerald-100/80 group-hover:text-emerald-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
                                 </svg>
                             </div>
@@ -218,15 +294,33 @@
 
                     <!-- دکمه کد QR -->
                     <a href="{% url 'catalog:qr' %}" class="group relative" title="کد QR">
-                        <div class="w-16 h-16 relative">
+                        <div class="nav-button w-16 h-16 relative">
+                            <div class="nav-glow" style="--glow-color: rgba(245, 158, 11, 0.5)"></div>
                             <div class="absolute inset-0 bg-[#0A0F1C] bg-opacity-90 rounded-2xl"></div>
                             <div class="absolute inset-0 backdrop-blur-xl rounded-2xl"></div>
                             <div class="absolute inset-0 rounded-2xl border border-white/10 shadow-lg overflow-hidden group-hover:-translate-y-2 transition-all duration-500">
                                 <div class="absolute inset-0 bg-gradient-to-br from-amber-500/10 to-orange-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                             </div>
                             <div class="relative h-full flex items-center justify-center">
-                                <svg class="w-7 h-7 text-amber-100/80 group-hover:text-amber-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="nav-icon w-7 h-7 text-amber-100/80 group-hover:text-amber-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- دکمه تعرفه‌ها -->
+                    <a href="{% url 'catalog:pricing' %}" class="group relative" title="تعرفه‌ها">
+                        <div class="nav-button w-16 h-16 relative">
+                            <div class="nav-glow" style="--glow-color: rgba(99, 102, 241, 0.5)"></div>
+                            <div class="absolute inset-0 bg-[#0A0F1C] bg-opacity-90 rounded-2xl"></div>
+                            <div class="absolute inset-0 backdrop-blur-xl rounded-2xl"></div>
+                            <div class="absolute inset-0 rounded-2xl border border-white/10 shadow-lg overflow-hidden group-hover:-translate-y-2 transition-all duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/10 to-violet-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </div>
+                            <div class="relative h-full flex items-center justify-center">
+                                <svg class="nav-icon w-7 h-7 text-indigo-100/80 group-hover:text-indigo-100 transform transition-all duration-500 group-hover:scale-110 z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                             </div>
                         </div>
@@ -235,5 +329,42 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // اضافه کردن افکت کلیک به دکمه‌ها
+            const navButtons = document.querySelectorAll('.nav-button');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.classList.add('button-pop');
+                    setTimeout(() => {
+                        this.classList.remove('button-pop');
+                    }, 300);
+                });
+            });
+
+            // بهینه‌سازی عملکرد در موبایل
+            let touchStartY = 0;
+            const nav = document.querySelector('.bottom-nav');
+            
+            document.addEventListener('touchstart', function(e) {
+                touchStartY = e.touches[0].clientY;
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function(e) {
+                const touchY = e.touches[0].clientY;
+                const diff = touchStartY - touchY;
+
+                // اگر کاربر به سمت بالا اسکرول می‌کند، نوار پایین را مخفی کن
+                if (diff > 50) {
+                    nav.style.transform = 'translateY(100%)';
+                }
+                // اگر کاربر به سمت پایین اسکرول می‌کند، نوار پایین را نمایش بده
+                else if (diff < -50) {
+                    nav.style.transform = 'translateY(0)';
+                }
+            }, { passive: true });
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,232 @@
+.form-label {
+    display: block;
+    color: rgb(209, 213, 219);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.form-input {
+    width: 100%;
+    background-color: rgba(31, 41, 55, 0.3);
+    color: rgb(209, 213, 219);
+    border-radius: 0.5rem;
+    padding: 0.875rem 1rem;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+    backdrop-filter: blur(8px);
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+.form-input:focus {
+    outline: none;
+    background-color: rgba(31, 41, 55, 0.5);
+}
+
+.form-radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.radio-button-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: rgba(31, 41, 55, 0.3);
+    border: 1px solid rgba(55, 65, 81, 0.3);
+    transition: all 0.3s;
+}
+
+.radio-button-container:hover {
+    background-color: rgba(31, 41, 55, 0.5);
+}
+
+.radio-button-text {
+    color: rgb(209, 213, 219);
+    transition: color 0.3s;
+}
+
+.radio-button-circle {
+    position: absolute;
+    left: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid rgb(75, 85, 99);
+    border-radius: 9999px;
+    transition: all 0.3s;
+}
+
+.form-radio:checked + .radio-button-text + .radio-button-circle {
+    border-color: rgb(59, 130, 246);
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.form-radio:checked + .radio-button-text + .radio-button-circle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgb(59, 130, 246);
+    border-radius: 9999px;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+}
+
+.input-container::before,
+.input-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    background: linear-gradient(130deg, rgb(59, 130, 246), rgb(99, 102, 241), rgb(139, 92, 246));
+    z-index: -1;
+    transition: all 0.3s;
+    opacity: 0;
+}
+
+.input-container::after {
+    filter: blur(8px);
+}
+
+.input-container:hover::before,
+.input-container:hover::after,
+.form-input:focus + .input-border::before,
+.form-input:focus + .input-border::after {
+    opacity: 1;
+}
+
+.submit-button-new {
+    position: relative;
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: all 0.5s;
+    color: white;
+    font-weight: 500;
+    font-size: 1.125rem;
+}
+
+.submit-button-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgb(59, 130, 246), rgb(99, 102, 241), rgb(139, 92, 246));
+    background-size: 200% 100%;
+    transition: all 0.5s;
+}
+
+.submit-button-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 0.75rem;
+    padding: 2px;
+    background: linear-gradient(130deg, rgb(59, 130, 246), rgb(99, 102, 241), rgb(139, 92, 246));
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.submit-button-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    z-index: 10;
+}
+
+.submit-button-new:hover .submit-button-background {
+    background-position: 100% 0;
+    transform: scale(1.05);
+}
+
+.submit-button-new:hover .submit-button-border {
+    background-size: 300% 100%;
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animate-tilt {
+    animation: tilt 10s infinite linear;
+}
+
+@keyframes tilt {
+    0%, 100% { transform: rotate(-1deg); }
+    50% { transform: rotate(1deg); }
+}
+
+.animate-shake {
+    animation: shake 0.2s ease-in-out 3;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+.firefly {
+    position: fixed;
+    width: 0.25rem;
+    height: 0.25rem;
+    background-color: rgba(59, 130, 246, 0.5);
+    border-radius: 9999px;
+    pointer-events: none;
+    animation: firefly 4s ease-in infinite;
+}
+
+@keyframes firefly {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+}
+
+.firefly:nth-child(1) { left: 10%; animation-delay: 0s; }
+.firefly:nth-child(2) { left: 20%; animation-delay: 0.5s; }
+.firefly:nth-child(3) { left: 30%; animation-delay: 1s; }
+.firefly:nth-child(4) { left: 40%; animation-delay: 1.5s; }
+.firefly:nth-child(5) { left: 50%; animation-delay: 2s; }
+.firefly:nth-child(6) { left: 60%; animation-delay: 2.5s; }
+.firefly:nth-child(7) { left: 70%; animation-delay: 3s; }
+.firefly:nth-child(8) { left: 80%; animation-delay: 3.5s; }
+.firefly:nth-child(9) { left: 90%; animation-delay: 4s; }
+.firefly:nth-child(10) { left: 95%; animation-delay: 4.5s; } 

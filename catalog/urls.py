@@ -23,4 +23,5 @@ urlpatterns = [
     path('advanced-settings/', views.advanced_settings, name='advanced_settings'),
     path('reporting-management/', views.reporting_management, name='reporting_management'),
     path('support-training/', views.support_training, name='support_training'),
+    path('demo-request/', views.demo_request, name='demo_request'),
 ] 

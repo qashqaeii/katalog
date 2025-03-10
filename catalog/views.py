@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import TemplateView, ListView
 from .models import Feature, PricingPlan, FAQ
+from django.contrib import messages
+from .forms import DemoRequestForm
 
 # Create your views here.
 
@@ -77,3 +79,15 @@ def error_500(request, *args, **argv):
 def error_403(request, exception=None):
     context = {}
     return render(request, 'catalog/403.html', context, status=403)
+
+def demo_request(request):
+    if request.method == 'POST':
+        form = DemoRequestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'درخواست شما با موفقیت ثبت شد.')
+            return redirect('demo_request')
+    else:
+        form = DemoRequestForm()
+    
+    return render(request, 'catalog/demo_request.html', {'form': form})

@@ -2,115 +2,309 @@
 
 {% block title %}قیمت‌گذاری - V2Bot{% endblock %}
 
+{% block extra_head %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{% endblock %}
+
 {% block content %}
-<div class="max-w-7xl mx-auto" dir="rtl">
-    <h1 class="text-4xl font-bold text-center mb-12">قیمت‌گذاری ساده و شفاف</h1>
-    
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- پلن پایه -->
-        <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-gray-400">
-            <h3 class="text-2xl font-bold mb-4">پایه</h3>
-            <div class="text-4xl font-bold mb-6">۹۹ دلار</div>
-            <p class="text-gray-600 mb-6">مناسب برای پروژه‌های کوچک</p>
-            <ul class="space-y-3 mb-8">
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    کد منبع
-                </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    پشتیبانی پایه
-                </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-                    </svg>
-                    مستندات
-                </li>
-            </ul>
-            <button class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
-                شروع کنید
+<div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
+    <!-- پس‌زمینه متحرک -->
+    <div class="fixed inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-indigo-900/20 to-purple-900/20"></div>
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute w-[500px] h-[500px] bg-blue-500/10 rounded-full filter blur-3xl animate-blob"></div>
+            <div class="absolute w-[500px] h-[500px] bg-purple-500/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+            <div class="absolute w-[500px] h-[500px] bg-indigo-500/10 rounded-full filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+        <!-- هدر -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-transparent bg-clip-text mb-6 animate-gradient">
+                لایسنس‌های V2Bot
+            </h1>
+            <p class="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto animate-fade-in-up">
+                با انتخاب یکی از لایسنس‌های ما، به دنیای امن و سریع V2Bot بپیوندید
+            </p>
+        </div>
+
+        <!-- دکمه‌های بالای صفحه -->
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="100">
+            <button class="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 px-6 py-3 rounded-lg backdrop-blur-xl border border-blue-500/30 transition-all duration-300 flex items-center justify-center gap-2 group hover:scale-105">
+                <span class="text-xl group-hover:rotate-12 transition-transform duration-300">🎮</span>
+                درخواست دمو
+            </button>
+            <button class="bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 px-6 py-3 rounded-lg backdrop-blur-xl border border-purple-500/30 transition-all duration-300 flex items-center justify-center gap-2 group hover:scale-105">
+                <span class="text-xl group-hover:rotate-12 transition-transform duration-300">💬</span>
+                پشتیبانی آنلاین
             </button>
         </div>
 
-        <!-- پلن حرفه‌ای -->
-        <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-blue-500 transform scale-105">
-            <div class="absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 rounded-bl-lg rounded-tr-lg text-sm">
-                محبوب
+        <!-- پلن‌ها -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <!-- لایسنس 1 ساله -->
+            <div class="relative group h-full" data-aos="fade-up" data-aos-delay="200">
+                <div class="absolute inset-0 bg-gradient-to-b from-blue-500/20 to-transparent rounded-3xl blur-xl transition-all duration-300 group-hover:blur-2xl"></div>
+                <div class="relative h-full bg-gray-900/60 backdrop-blur-xl border border-blue-500/20 p-8 rounded-2xl transition-all duration-500 hover:border-blue-500/40 hover:transform hover:-translate-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="text-4xl animate-bounce-slow">⭐️</span>
+                            <h3 class="text-2xl font-bold text-white">لایسنس 1 ساله</h3>
+                        </div>
+                        <div class="text-4xl font-bold text-white mb-2">80 دلار</div>
+                        <p class="text-blue-300 mb-8">شروعی مطمئن برای کسب‌وکار شما</p>
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-center gap-3 text-gray-300 group/item">
+                                <svg class="w-5 h-5 text-blue-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                پشتیبانی از تمام پروتکل‌ها
+                            </li>
+                            <li class="flex items-center gap-3 text-gray-300 group/item">
+                                <svg class="w-5 h-5 text-blue-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                                آپدیت‌های رایگان
+                </li>
+                            <li class="flex items-center gap-3 text-gray-300 group/item">
+                                <svg class="w-5 h-5 text-blue-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                                پشتیبانی تیکتینگ
+                </li>
+                            <li class="flex items-center gap-3 text-gray-300 group/item">
+                                <svg class="w-5 h-5 text-blue-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                                مدیریت 100 کاربر
+                </li>
+            </ul>
+                    </div>
+                    <button class="w-full bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 py-3 rounded-xl backdrop-blur-xl border border-blue-500/30 transition-all duration-300 hover:scale-105">
+                شروع کنید
+            </button>
+        </div>
             </div>
-            <h3 class="text-2xl font-bold mb-4">حرفه‌ای</h3>
-            <div class="text-4xl font-bold mb-6">۱۹۹ دلار</div>
-            <p class="text-gray-600 mb-6">بهترین برای کسب‌وکارها</p>
-            <ul class="space-y-3 mb-8">
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+
+            <!-- لایسنس 5 ساله -->
+            <div class="relative group h-full" data-aos="fade-up" data-aos-delay="300">
+                <div class="absolute inset-0 bg-gradient-to-b from-purple-500/30 to-transparent rounded-3xl blur-xl transition-all duration-300 group-hover:blur-2xl"></div>
+                <div class="relative h-full bg-gray-900/60 backdrop-blur-xl border border-purple-500/30 p-8 rounded-2xl transition-all duration-500 hover:border-purple-500/50 hover:transform hover:-translate-y-2 scale-105 flex flex-col justify-between">
+                    <div class="absolute -top-5 right-0 left-0 mx-auto w-max animate-pulse">
+                        <div class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-1 rounded-full text-sm font-medium">
+                            محبوب‌ترین
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-4xl">👑</span>
+                        <h3 class="text-2xl font-bold text-white">لایسنس 5 ساله</h3>
+                    </div>
+                    <div class="text-4xl font-bold text-white mb-2">180 دلار</div>
+                    <p class="text-purple-300 mb-8">بهترین انتخاب برای کسب‌وکارهای در حال رشد</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-purple-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            تمام امکانات لایسنس 1 ساله
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-purple-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    تمام امکانات پلن پایه
+                            پشتیبانی اختصاصی
                 </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-purple-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    پشتیبانی ویژه
+                            مدیریت 500 کاربر
                 </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-purple-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    ویژگی‌های پیشرفته
+                            گزارش‌گیری پیشرفته
                 </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-purple-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    تغییرات سفارشی
+                            API اختصاصی
                 </li>
             </ul>
-            <button class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
+                    <button class="w-full bg-gradient-to-r from-purple-500 to-indigo-500 text-white py-3 rounded-xl transition-all duration-300 hover:opacity-90 hover:scale-105">
                 شروع کنید
             </button>
+                </div>
         </div>
 
-        <!-- پلن سازمانی -->
-        <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-purple-500">
-            <h3 class="text-2xl font-bold mb-4">سازمانی</h3>
-            <div class="text-4xl font-bold mb-6">۴۹۹ دلار</div>
-            <p class="text-gray-600 mb-6">برای سازمان‌های بزرگ</p>
-            <ul class="space-y-3 mb-8">
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            <!-- لایسنس مادام‌العمر -->
+            <div class="relative group h-full" data-aos="fade-up" data-aos-delay="400">
+                <div class="absolute inset-0 bg-gradient-to-b from-indigo-500/20 to-transparent rounded-3xl blur-xl transition-all duration-300 group-hover:blur-2xl"></div>
+                <div class="relative h-full bg-gray-900/60 backdrop-blur-xl border border-indigo-500/20 p-8 rounded-2xl transition-all duration-500 hover:border-indigo-500/40 hover:transform hover:-translate-y-2 flex flex-col justify-between">
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="text-4xl">💎</span>
+                        <h3 class="text-2xl font-bold text-white">لایسنس مادام‌العمر</h3>
+                    </div>
+                    <div class="text-4xl font-bold text-white mb-2">280 دلار</div>
+                    <p class="text-indigo-300 mb-8">بهترین سرمایه‌گذاری برای آینده</p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            تمام امکانات لایسنس 5 ساله
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    تمام امکانات پلن حرفه‌ای
+                            پشتیبانی VIP
                 </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    پشتیبانی ۲۴/۷
+                            کاربران نامحدود
                 </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    توسعه اختصاصی
+                            سفارشی‌سازی کامل
                 </li>
-                <li class="flex items-center">
-                    <svg class="w-5 h-5 text-green-500 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                        <li class="flex items-center gap-3 text-gray-300 group/item">
+                            <svg class="w-5 h-5 text-indigo-400 flex-shrink-0 transition-transform duration-300 group-hover/item:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                     </svg>
-                    قرارداد SLA
+                            اولویت در آپدیت‌ها
                 </li>
             </ul>
-            <button class="w-full bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200">
-                تماس با ما
+                    <button class="w-full bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 py-3 rounded-xl backdrop-blur-xl border border-indigo-500/30 transition-all duration-300 hover:scale-105">
+                        شروع کنید
             </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- بخش مزایا -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            <div class="bg-gray-900/40 backdrop-blur-xl p-6 rounded-xl border border-white/10 transition-all duration-300 hover:border-white/20 hover:transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="500">
+                <div class="text-3xl mb-4 animate-bounce-slow">🚀</div>
+                <h4 class="text-lg font-semibold text-white mb-2">به‌روزرسانی خودکار</h4>
+                <p class="text-gray-400">دریافت خودکار آخرین به‌روزرسانی‌ها و ویژگی‌های جدید</p>
+            </div>
+            <div class="bg-gray-900/40 backdrop-blur-xl p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="600">
+                <div class="text-3xl mb-4">🔒</div>
+                <h4 class="text-lg font-semibold text-white mb-2">امنیت پیشرفته</h4>
+                <p class="text-gray-400">محافظت از داده‌ها با استانداردهای امنیتی روز دنیا</p>
+            </div>
+            <div class="bg-gray-900/40 backdrop-blur-xl p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="700">
+                <div class="text-3xl mb-4">💬</div>
+                <h4 class="text-lg font-semibold text-white mb-2">پشتیبانی 24/7</h4>
+                <p class="text-gray-400">دسترسی به تیم پشتیبانی متخصص در تمام ساعات</p>
+            </div>
+            <div class="bg-gray-900/40 backdrop-blur-xl p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="800">
+                <div class="text-3xl mb-4">📊</div>
+                <h4 class="text-lg font-semibold text-white mb-2">گزارش‌های پیشرفته</h4>
+                <p class="text-gray-400">دسترسی به آمار و گزارش‌های دقیق و لحظه‌ای</p>
+            </div>
+        </div>
+
+        <!-- بخش سوالات متداول -->
+        <div class="max-w-3xl mx-auto">
+            <h3 class="text-2xl font-bold text-white mb-8 text-center animate-gradient" data-aos="fade-up">سوالات متداول</h3>
+            <div class="space-y-4">
+                <div class="bg-gray-900/40 backdrop-blur-xl p-6 rounded-xl border border-white/10 transition-all duration-300 hover:border-white/20 hover:transform hover:-translate-y-1" data-aos="fade-up" data-aos-delay="900">
+                    <h4 class="text-lg font-semibold text-white mb-2">آیا امکان ارتقای لایسنس وجود دارد؟</h4>
+                    <p class="text-gray-400">بله، شما می‌توانید در هر زمان لایسنس خود را به نسخه بالاتر ارتقا دهید.</p>
+                </div>
+                <div class="bg-gray-900/40 backdrop-blur-xl p-6 rounded-xl border border-white/10" data-aos="fade-up" data-aos-delay="1000">
+                    <h4 class="text-lg font-semibold text-white mb-2">نحوه پشتیبانی چگونه است؟</h4>
+                    <p class="text-gray-400">پشتیبانی از طریق تیکت، ایمیل و چت آنلاین 24/7 در دسترس است.</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<style>
+    @keyframes blob {
+        0% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0, 0) scale(1); }
+    }
+
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .animate-blob {
+        animation: blob 7s infinite;
+    }
+
+    .animate-gradient {
+        background-size: 200% 200%;
+        animation: gradient 8s ease infinite;
+    }
+
+    .animate-bounce-slow {
+        animation: bounce-slow 3s ease-in-out infinite;
+    }
+
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .animation-delay-2000 {
+        animation-delay: 2s;
+    }
+
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+
+    @media (max-width: 640px) {
+        .grid {
+            gap: 1rem;
+        }
+        
+        .text-4xl {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out',
+            once: true,
+            mirror: true
+        });
+    });
+</script>
 {% endblock %} 

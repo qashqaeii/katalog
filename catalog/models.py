@@ -28,3 +28,30 @@ class FAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+class DemoRequest(models.Model):
+    ROBOT_STATUS_CHOICES = [
+        ('has_bot', 'ربات دارم'),
+        ('no_bot', 'ربات ندارم'),
+    ]
+
+    mobile = models.CharField(max_length=15, verbose_name='شماره موبایل')
+    telegram_id = models.CharField(max_length=100, verbose_name='آیدی تلگرام')
+    email = models.EmailField(verbose_name='ایمیل')
+    panel_name = models.CharField(max_length=100, verbose_name='نام پنل')
+    panel_version = models.CharField(max_length=20, verbose_name='نسخه پنل')
+    robot_status = models.CharField(
+        max_length=10,
+        choices=ROBOT_STATUS_CHOICES,
+        default='no_bot',
+        verbose_name='وضعیت ربات'
+    )
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ثبت')
+
+    class Meta:
+        verbose_name = 'درخواست دمو'
+        verbose_name_plural = 'درخواست‌های دمو'
+        db_table = 'demo_requests'
+
+    def __str__(self):
+        return f"{self.panel_name} - {self.mobile}"

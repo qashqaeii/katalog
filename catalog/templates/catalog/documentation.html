@@ -3,236 +3,1177 @@
 
 {% block title %}V2Bot - مستندات{% endblock %}
 
+{% block extra_head %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+{% endblock %}
+
 {% block content %}
-<div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
-    <!-- گرادیان‌های پس‌زمینه -->
-    <div class="absolute inset-0">
-        <div class="absolute w-[1800px] h-[1800px] bg-gradient-to-r from-blue-600/30 via-violet-600/30 to-purple-600/30 rounded-full blur-[100px] -top-[500px] -right-[500px] animate-pulse-slow mix-blend-overlay"></div>
-        <div class="absolute w-[1600px] h-[1600px] bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-[140px] -bottom-[300px] right-[100px] animate-pulse-slow mix-blend-overlay"></div>
+<div class="min-h-screen bg-[#0A0F1C] relative" dir="rtl">
+    <!-- پس‌زمینه متحرک -->
+    <div class="fixed inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-indigo-900/20 to-purple-900/20"></div>
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute w-[500px] h-[500px] bg-blue-500/10 rounded-full filter blur-3xl animate-blob"></div>
+            <div class="absolute w-[500px] h-[500px] bg-purple-500/10 rounded-full filter blur-3xl animate-blob animation-delay-2000"></div>
+            <div class="absolute w-[500px] h-[500px] bg-indigo-500/10 rounded-full filter blur-3xl animate-blob animation-delay-4000"></div>
+        </div>
+    </div>
+
+    <!-- دکمه منو برای موبایل -->
+    <button id="mobile-menu-button" class="fixed top-4 right-4 z-50 lg:hidden bg-blue-500/20 p-2 rounded-lg backdrop-blur-xl border border-white/10">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </button>
+
+    <!-- منوی کناری -->
+    <div id="sidebar" class="fixed top-0 right-0 h-screen w-72 bg-gradient-to-b from-gray-900/95 to-gray-800/95 border-l border-white/10 overflow-y-auto sidebar-scroll z-40 transition-all duration-300 transform translate-x-full lg:translate-x-0">
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-8 group">
+                <div class="relative">
+                    <img src="{% static 'catalog/logos/logo.png' %}" alt="V2Bot Logo" class="w-10 h-10 group-hover:scale-110 transition-transform duration-300">
+                    <div class="absolute inset-0 bg-blue-500/20 rounded-full filter blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <h2 class="text-xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-transparent bg-clip-text">مستندات V2Bot</h2>
+            </div>
+            
+            <!-- منوی اصلی -->
+            <nav class="space-y-4">
+                <!-- شروع کار -->
+                <div class="menu-section">
+                    <button class="flex items-center justify-between w-full text-sm font-medium text-blue-400 mb-2 hover:text-blue-300 transition-colors group">
+                        <span class="flex items-center gap-2">
+                            <span class="text-xl">🚀</span>
+                            شروع کار
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform menu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <ul class="space-y-1 menu-content">
+                        <li>
+                            <a href="#introduction" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">📖</span>
+                                    معرفی V2Bot
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#quick-start" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🚀</span>
+                                    شروع سریع
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#requirements" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">📋</span>
+                                    پیش‌نیازها
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- نصب و راه‌اندازی -->
+                <div class="menu-section">
+                    <button class="flex items-center justify-between w-full text-sm font-medium text-blue-400 mb-2 hover:text-blue-300 transition-colors">
+                        <span class="flex items-center gap-2">
+                            <span class="text-xl">⚙️</span>
+                            نصب و راه‌اندازی
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform menu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <ul class="space-y-1 menu-content">
+                        <li>
+                            <a href="#installation-linux" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🖥️</span>
+                                    نصب در لینوکس
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#installation-windows" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">💻</span>
+                                    نصب در ویندوز
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#initial-config" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🔧</span>
+                                    پیکربندی اولیه
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- تنظیمات پیشرفته -->
+                <div class="menu-section">
+                    <button class="flex items-center justify-between w-full text-sm font-medium text-blue-400 mb-2 hover:text-blue-300 transition-colors">
+                        <span class="flex items-center gap-2">
+                            <span class="text-xl">🔧</span>
+                            تنظیمات پیشرفته
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform menu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <ul class="space-y-1 menu-content">
+                        <li>
+                            <a href="#protocols" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🌐</span>
+                                    پروتکل‌ها
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#security" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🔒</span>
+                                    تنظیمات امنیتی
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#optimization" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🚀</span>
+                                    بهینه‌سازی
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- مدیریت کاربران -->
+                <div class="menu-section">
+                    <button class="flex items-center justify-between w-full text-sm font-medium text-blue-400 mb-2 hover:text-blue-300 transition-colors">
+                        <span class="flex items-center gap-2">
+                            <span class="text-xl">👥</span>
+                            مدیریت کاربران
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform menu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <ul class="space-y-1 menu-content">
+                        <li>
+                            <a href="#user-management" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">👥</span>
+                                    مدیریت کاربران
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#access-control" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🔒</span>
+                                    کنترل دسترسی
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#limitations" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🔧</span>
+                                    محدودیت‌ها
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- گزارش‌گیری -->
+                <div class="menu-section">
+                    <button class="flex items-center justify-between w-full text-sm font-medium text-blue-400 mb-2 hover:text-blue-300 transition-colors">
+                        <span class="flex items-center gap-2">
+                            <span class="text-xl">📊</span>
+                            گزارش‌گیری
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform menu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <ul class="space-y-1 menu-content">
+                        <li>
+                            <a href="#statistics" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">📊</span>
+                                    آمار و گزارش‌ها
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#monitoring" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🔍</span>
+                                    مانیتورینگ
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#alerts" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🚨</span>
+                                    هشدارها
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- عیب‌یابی -->
+                <div class="menu-section">
+                    <button class="flex items-center justify-between w-full text-sm font-medium text-blue-400 mb-2 hover:text-blue-300 transition-colors">
+                        <span class="flex items-center gap-2">
+                            <span class="text-xl">🐛</span>
+                            عیب‌یابی
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform menu-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <ul class="space-y-1 menu-content">
+                        <li>
+                            <a href="#troubleshooting" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🔧</span>
+                                    راهنمای عیب‌یابی
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#faq" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">❓</span>
+                                    سوالات متداول
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#support" class="text-gray-300 hover:text-white block py-1 text-sm transition-colors pr-6 border-r border-blue-500/20 hover:border-blue-500 hover:bg-blue-500/5">
+                                <span class="flex items-center gap-2">
+                                    <span class="text-sm">🤝</span>
+                                    پشتیبانی
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </div>
 
     <!-- محتوای اصلی -->
-    <div class="relative z-10 container mx-auto px-4 py-12">
-        <!-- هدر صفحه -->
-        <div class="text-center mb-16">
-            <h1 class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 text-transparent bg-clip-text mb-6">مستندات V2Bot</h1>
-            <p class="text-lg text-blue-200/80 max-w-3xl mx-auto">راهنمای جامع نصب، پیکربندی و استفاده از ربات V2Bot</p>
-        </div>
-
-        <!-- بخش‌های مستندات -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- بخش نصب و راه‌اندازی -->
-            <div class="bg-gradient-to-br from-blue-900/50 to-indigo-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="bg-gradient-to-br from-blue-500 to-indigo-500 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
+    <div class="lg:mr-72 p-4 md:p-8 relative z-10 transition-all duration-300">
+        <!-- معرفی -->
+        <section id="introduction" class="mb-8 md:mb-16" data-aos="fade-up">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-4 mb-6 md:mb-8 group">
+                    <div class="relative">
+                        <div class="p-2 md:p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl backdrop-blur-xl border border-white/10 group-hover:border-blue-500/50 transition-colors duration-300">
+                            <span class="text-2xl md:text-3xl">📖</span>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-500/20 rounded-xl filter blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <h3 class="text-xl font-bold text-white">نصب و راه‌اندازی</h3>
+                    <h1 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-transparent bg-clip-text">معرفی V2Bot</h1>
                 </div>
-                <ul class="space-y-3 text-blue-200/80">
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>پیش‌نیازهای نصب</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>نصب در سرور لینوکس</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>پیکربندی اولیه</span>
-                    </li>
-                </ul>
+                <div class="prose prose-invert max-w-none">
+                    <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4">
+                        V2Bot یک ربات قدرتمند برای مدیریت و کنترل سرویس‌های V2Ray است که امکانات متنوعی را برای مدیریت کاربران، پروتکل‌ها و تنظیمات در اختیار شما قرار می‌دهد.
+                    </p>
+                    <h2 class="text-xl font-bold text-white mt-8 mb-4">ویژگی‌های اصلی</h2>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            مدیریت آسان کاربران و سرویس‌ها
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            پشتیبانی از پروتکل‌های متنوع
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            سیستم گزارش‌گیری پیشرفته
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <!-- بخش پیکربندی -->
-            <div class="bg-gradient-to-br from-indigo-900/50 to-violet-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="bg-gradient-to-br from-indigo-500 to-violet-500 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                        </svg>
+        <!-- شروع سریع -->
+        <section id="quick-start" class="mb-16">
+            <div class="max-w-3xl">
+                <h2 class="text-2xl font-bold text-white mb-6">شروع سریع</h2>
+                <div class="bg-gray-800/50 rounded-lg p-6 mb-6">
+                    <h3 class="text-lg font-medium text-white mb-4">نصب با یک دستور</h3>
+                    <div class="bg-gray-900 rounded p-4 font-mono text-sm text-gray-300">
+                        <code>bash <(curl -Ls https://raw.githubusercontent.com/v2bot/install/main/install.sh)</code>
                     </div>
-                    <h3 class="text-xl font-bold text-white">پیکربندی</h3>
                 </div>
-                <ul class="space-y-3 text-indigo-200/80">
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                <p class="text-gray-300 mb-6">
+                    برای شروع سریع، می‌توانید از دستور بالا استفاده کنید. این دستور به صورت خودکار تمام مراحل نصب و راه‌اندازی اولیه را انجام می‌دهد.
+                </p>
+                <div class="bg-blue-900/20 border border-blue-500/20 rounded-lg p-4">
+                    <div class="flex items-start gap-3">
+                        <svg class="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
-                        <span>تنظیمات پروتکل‌ها</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>مدیریت پورت‌ها</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>تنظیمات امنیتی</span>
-                    </li>
-                </ul>
+                        <p class="text-sm text-blue-200">
+                            توجه: قبل از نصب، اطمینان حاصل کنید که سیستم شما پیش‌نیازهای لازم را دارد و پورت‌های مورد نیاز باز هستند.
+                        </p>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- بخش مدیریت کاربران -->
-            <div class="bg-gradient-to-br from-violet-900/50 to-purple-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="bg-gradient-to-br from-violet-500 to-purple-500 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
+        <!-- پیش‌نیازها -->
+        <section id="requirements" class="mb-16">
+            <div class="max-w-3xl">
+                <h2 class="text-2xl font-bold text-white mb-6">پیش‌نیازها</h2>
+                <div class="grid gap-6">
+                    <!-- سیستم عامل -->
+                    <div class="bg-gray-800/50 rounded-lg p-6">
+                        <h3 class="text-lg font-medium text-white mb-4">سیستم عامل</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Ubuntu 20.04 یا بالاتر
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Debian 10 یا بالاتر
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                CentOS 8 یا بالاتر
+                            </li>
+                        </ul>
                     </div>
-                    <h3 class="text-xl font-bold text-white">مدیریت کاربران</h3>
-                </div>
-                <ul class="space-y-3 text-violet-200/80">
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>افزودن کاربر جدید</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>مدیریت دسترسی‌ها</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>محدودیت‌های کاربران</span>
-                    </li>
-                </ul>
-            </div>
 
-            <!-- بخش گزارش‌گیری -->
-            <div class="bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="bg-gradient-to-br from-purple-500 to-pink-500 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
+                    <!-- منابع سیستم -->
+                    <div class="bg-gray-800/50 rounded-lg p-6">
+                        <h3 class="text-lg font-medium text-white mb-4">منابع سیستم</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                حداقل 1 گیگابایت RAM
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                حداقل 10 گیگابایت فضای دیسک
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                پردازنده 1 هسته یا بیشتر
+                            </li>
+                        </ul>
                     </div>
-                    <h3 class="text-xl font-bold text-white">گزارش‌گیری</h3>
-                </div>
-                <ul class="space-y-3 text-purple-200/80">
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>گزارش‌های آماری</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>نمودارهای مصرف</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>گزارش‌های دوره‌ای</span>
-                    </li>
-                </ul>
-            </div>
 
-            <!-- بخش پشتیبانی -->
-            <div class="bg-gradient-to-br from-pink-900/50 to-rose-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="bg-gradient-to-br from-pink-500 to-rose-500 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
+                    <!-- نرم‌افزارهای مورد نیاز -->
+                    <div class="bg-gray-800/50 rounded-lg p-6">
+                        <h3 class="text-lg font-medium text-white mb-4">نرم‌افزارهای مورد نیاز</h3>
+                        <ul class="space-y-3 text-gray-300">
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Python 3.8 یا بالاتر
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Docker (اختیاری)
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Nginx
+                            </li>
+                        </ul>
                     </div>
-                    <h3 class="text-xl font-bold text-white">پشتیبانی</h3>
                 </div>
-                <ul class="space-y-3 text-pink-200/80">
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>تماس با پشتیبانی</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>سوالات متداول</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>راهنمای عیب‌یابی</span>
-                    </li>
-                </ul>
             </div>
+        </section>
 
-            <!-- بخش به‌روزرسانی‌ها -->
-            <div class="bg-gradient-to-br from-rose-900/50 to-red-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="bg-gradient-to-br from-rose-500 to-red-500 p-3 rounded-xl">
-                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                        </svg>
+        <!-- نصب در لینوکس -->
+        <section id="installation-linux" class="mb-8 md:mb-16" data-aos="fade-up">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-4 mb-6 md:mb-8 group">
+                    <div class="relative">
+                        <div class="p-2 md:p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl backdrop-blur-xl border border-white/10 group-hover:border-blue-500/50 transition-colors duration-300">
+                            <span class="text-2xl md:text-3xl">🖥️</span>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-500/20 rounded-xl filter blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
-                    <h3 class="text-xl font-bold text-white">به‌روزرسانی‌ها</h3>
+                    <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-transparent bg-clip-text">نصب در لینوکس</h2>
                 </div>
-                <ul class="space-y-3 text-rose-200/80">
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>آخرین تغییرات</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>راهنمای به‌روزرسانی</span>
-                    </li>
-                    <li class="flex items-center gap-2">
-                        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <span>تغییرات آینده</span>
-                    </li>
-                </ul>
+
+                <!-- مراحل نصب -->
+                <div class="space-y-4 md:space-y-6">
+                    <!-- مرحله 1: آماده‌سازی سیستم -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">1. آماده‌سازی سیستم</h3>
+                        <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 mb-3 md:mb-4 overflow-x-auto">
+                            <code>sudo apt update && sudo apt upgrade -y</code>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-300">ابتدا سیستم را به‌روزرسانی کنید تا از نصب آخرین نسخه‌های نرم‌افزارها مطمئن شوید.</p>
+                    </div>
+
+                    <!-- مرحله 2: نصب پیش‌نیازها -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">2. نصب پیش‌نیازها</h3>
+                        <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 mb-3 md:mb-4 overflow-x-auto">
+                            <code>sudo apt install curl socat ufw -y</code>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-300">نصب پکیج‌های مورد نیاز برای اجرای V2Bot و تنظیمات امنیتی.</p>
+                    </div>
+
+                    <!-- مرحله 3: تنظیمات فایروال -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">3. تنظیمات فایروال</h3>
+                        <div class="space-y-3">
+                            <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 overflow-x-auto">
+                                <code>sudo ufw allow 22/tcp</code>
+                            </div>
+                            <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 overflow-x-auto">
+                                <code>sudo ufw allow 80/tcp</code>
+                            </div>
+                            <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 overflow-x-auto">
+                                <code>sudo ufw allow 443/tcp</code>
+                            </div>
+                            <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 overflow-x-auto">
+                                <code>sudo ufw enable</code>
+                            </div>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-300 mt-3">باز کردن پورت‌های ضروری و فعال‌سازی فایروال برای امنیت بیشتر.</p>
+                    </div>
+
+                    <!-- مرحله 4: نصب V2Bot -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">4. نصب V2Bot</h3>
+                        <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 mb-3 md:mb-4 overflow-x-auto">
+                            <code>bash <(curl -Ls https://raw.githubusercontent.com/v2bot/install/main/install.sh)</code>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-300">اجرای اسکریپت نصب خودکار V2Bot که تمام مراحل نصب و پیکربندی اولیه را انجام می‌دهد.</p>
+                    </div>
+
+                    <!-- مرحله 5: تایید نصب -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">5. تایید نصب</h3>
+                        <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 mb-3 md:mb-4 overflow-x-auto">
+                            <code>v2bot status</code>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-300">بررسی وضعیت نصب و اطمینان از اجرای صحیح سرویس.</p>
+                    </div>
+
+                    <!-- نکات مهم -->
+                    <div class="bg-blue-900/20 border border-blue-500/20 rounded-lg p-4 md:p-6">
+                        <h4 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            نکات مهم
+                        </h4>
+                        <ul class="space-y-2 text-sm md:text-base text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>اطمینان حاصل کنید که سیستم شما حداقل 1GB RAM دارد.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>پورت‌های 80 و 443 باید آزاد باشند.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>توصیه می‌شود از Ubuntu 20.04 یا بالاتر استفاده کنید.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>در صورت استفاده از فایروال، حتماً پورت SSH (22) را باز نگه دارید.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- رفع مشکلات رایج -->
+                    <div class="bg-red-900/20 border border-red-500/20 rounded-lg p-4 md:p-6">
+                        <h4 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                            </svg>
+                            رفع مشکلات رایج
+                        </h4>
+                        <ul class="space-y-2 text-sm md:text-base text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-red-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                                <span>در صورت خطای نصب: <code class="text-red-300">v2bot reinstall</code></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-red-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                                <span>مشکل پورت: بررسی با <code class="text-red-300">netstat -tulpn</code></span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-red-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                                <span>خطای سرویس: بررسی لاگ‌ها با <code class="text-red-300">v2bot log</code></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- نصب در ویندوز -->
+        <section id="installation-windows" class="mb-8 md:mb-16" data-aos="fade-up">
+            <div class="max-w-3xl mx-auto">
+                <div class="flex items-center gap-4 mb-6 md:mb-8 group">
+                    <div class="relative">
+                        <div class="p-2 md:p-3 bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-xl backdrop-blur-xl border border-white/10 group-hover:border-blue-500/50 transition-colors duration-300">
+                            <span class="text-2xl md:text-3xl">💻</span>
+                        </div>
+                        <div class="absolute inset-0 bg-blue-500/20 rounded-xl filter blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 text-transparent bg-clip-text">نصب در ویندوز</h2>
+                </div>
+
+                <!-- مراحل نصب در ویندوز -->
+                <div class="space-y-4 md:space-y-6">
+                    <!-- مرحله 1: نصب WSL -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">1. نصب WSL</h3>
+                        <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 mb-3 md:mb-4 overflow-x-auto">
+                            <code>wsl --install</code>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-300">نصب Windows Subsystem for Linux برای اجرای V2Bot در ویندوز.</p>
+                    </div>
+
+                    <!-- مرحله 2: نصب Ubuntu -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">2. نصب Ubuntu در WSL</h3>
+                        <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 mb-3 md:mb-4 overflow-x-auto">
+                            <code>wsl --install -d Ubuntu-20.04</code>
+                        </div>
+                        <p class="text-sm md:text-base text-gray-300">نصب توزیع Ubuntu 20.04 در WSL.</p>
+                    </div>
+
+                    <!-- مرحله 3: نصب V2Bot -->
+                    <div class="bg-gray-800/50 rounded-lg p-4 md:p-6">
+                        <h3 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4">3. نصب V2Bot</h3>
+                        <p class="text-sm md:text-base text-gray-300 mb-3">پس از نصب Ubuntu، مراحل نصب مشابه لینوکس را دنبال کنید.</p>
+                        <div class="bg-gray-900 rounded p-3 md:p-4 font-mono text-xs md:text-sm text-gray-300 overflow-x-auto">
+                            <code>bash <(curl -Ls https://raw.githubusercontent.com/v2bot/install/main/install.sh)</code>
+                        </div>
+                    </div>
+
+                    <!-- نکات مهم ویندوز -->
+                    <div class="bg-blue-900/20 border border-blue-500/20 rounded-lg p-4 md:p-6">
+                        <h4 class="text-base md:text-lg font-medium text-white mb-3 md:mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            نکات مهم نصب در ویندوز
+                        </h4>
+                        <ul class="space-y-2 text-sm md:text-base text-gray-300">
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>اطمینان حاصل کنید که ویندوز 10 نسخه 2004 یا بالاتر نصب دارید.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>قابلیت Virtualization در BIOS باید فعال باشد.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <svg class="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Windows Terminal را برای تجربه بهتر نصب کنید.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- و سایر بخش‌ها -->
     </div>
 </div>
 
 <style>
-    @keyframes float-slow {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
+    /* استایل‌های اضافی */
+    .prose {
+        max-width: 100%;
+    }
+    .prose p {
+        margin-top: 1.25em;
+        margin-bottom: 1.25em;
+    }
+    .prose h2 {
+        color: white;
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+    .prose ul {
+        margin-top: 1.25em;
+        margin-bottom: 1.25em;
+    }
+    .prose li {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    /* استایل برای کد */
+    code {
+        direction: ltr;
+        display: inline-block;
+    }
+    
+    /* استایل برای اسکرول منوی کناری */
+    .sidebar-scroll {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    }
+    .sidebar-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+    .sidebar-scroll::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .sidebar-scroll::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
     }
 
-    @keyframes pulse-slow {
-        0%, 100% { opacity: 0.5; transform: scale(1); }
-        50% { opacity: 0.7; transform: scale(1.05); }
+    /* انیمیشن‌های جدید */
+    @keyframes blob {
+        0% { transform: translate(0, 0) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0, 0) scale(1); }
     }
 
-    .animate-float-slow {
-        animation: float-slow 6s ease-in-out infinite;
+    .animate-blob {
+        animation: blob 7s infinite;
     }
 
-    .animate-pulse-slow {
-        animation: pulse-slow 4s ease-in-out infinite;
+    .animation-delay-2000 {
+        animation-delay: 2s;
     }
+
+    .animation-delay-4000 {
+        animation-delay: 4s;
+    }
+
+    /* استایل‌های منو */
+    .menu-section .menu-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .menu-section.active .menu-content {
+        max-height: none;
+    }
+
+    .menu-section.active .menu-arrow {
+        transform: rotate(180deg);
+    }
+
+    /* استایل‌های رسپانسیو جدید */
+    @media (max-width: 1024px) {
+        #sidebar {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        #sidebar.sidebar-open {
+            transform: translateX(0);
+        }
+        
+        .content-shifted {
+            transform: translateX(-18rem);
+        }
+
+        /* افزایش z-index برای اطمینان از نمایش روی سایر المان‌ها */
+        #mobile-menu-button {
+            z-index: 60;
+        }
+
+        #sidebar {
+            z-index: 50;
+        }
+    }
+
+    /* اضافه کردن سایه و بک‌دراپ برای منوی موبایل */
+    @media (max-width: 768px) {
+        #sidebar {
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+        }
+
+        #sidebar::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        #sidebar.sidebar-open::before {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    }
+
+    /* بهینه‌سازی اسکرول در موبایل */
+    @media (hover: none) and (pointer: coarse) {
+        .sidebar-scroll {
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    /* استایل‌های جدید برای بهبود خوانایی در موبایل */
+    @media (max-width: 640px) {
+        .bg-gray-800\/50 {
+            background-color: rgba(31, 41, 55, 0.7);
+        }
+
+        .backdrop-blur-xl {
+            backdrop-filter: blur(20px);
+        }
+
+        .prose p {
+            margin-top: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        code {
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        /* بهبود فاصله‌گذاری در موبایل */
+        .p-4 {
+            padding: 1rem;
+        }
+        
+        .gap-4 {
+            gap: 0.75rem;
+        }
+        
+        /* بهبود خوانایی متن */
+        .text-sm {
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+        
+        /* کاهش اندازه آیکون‌ها */
+        .w-5 {
+            width: 1.125rem;
+        }
+        
+        .h-5 {
+            height: 1.125rem;
+        }
+        
+        /* بهبود دکمه‌های لمسی */
+        a, button {
+            min-height: 44px;
+            min-width: 44px;
+        }
+    }
+
+    /* بهبود اسکرول افقی برای کدها در موبایل */
+    .overflow-x-auto {
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .overflow-x-auto::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* بهبود اسکرول در موبایل */
+    .scroll-mt-20 {
+        scroll-margin-top: 1.25rem;
+    }
+
+    .scroll-mt-80 {
+        scroll-margin-top: 5rem;
+    }
+
+    @media (max-width: 768px) {
+        html {
+            scroll-padding-top: 4rem;
+        }
+        
+        section[id] {
+            scroll-margin-top: 4rem;
+            padding-top: 1rem;
+        }
+    }
+
+    @media (min-width: 769px) {
+        html {
+            scroll-padding-top: 6rem;
+        }
+        
+        section[id] {
+            scroll-margin-top: 6rem;
+            padding-top: 2rem;
+        }
+    }
+
+    /* بهینه‌سازی اسکرول */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* بهبود عملکرد منو در موبایل */
+    @media (max-width: 1024px) {
+        #sidebar.sidebar-open + .lg\:mr-72 {
+            opacity: 0.3;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            filter: blur(2px);
+        }
+        
+        #sidebar.sidebar-open::before {
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(6px);
+        }
+        
+        #mobile-menu-button {
+            transition: transform 0.3s ease;
+            background: rgba(59, 130, 246, 0.3);
+        }
+        
+        #mobile-menu-button.active {
+            transform: rotate(90deg);
+            background: rgba(59, 130, 246, 0.5);
+        }
+    }
+
+    /* بهبود استایل محتوا */
+    .content-section {
+        background: rgba(17, 24, 39, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .content-section:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #60A5FA, #818CF8, #A78BFA);
+        -webkit-background-clip: text;
+        color: transparent;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .section-icon {
+        font-size: 1.75rem;
+        padding: 0.75rem;
+        background: rgba(59, 130, 246, 0.2);
+        border-radius: 1rem;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+
+    /* بهبود انیمیشن‌ها */
+    .content-section {
+        animation: fadeInUp 0.6s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* تاخیر در انیمیشن برای هر بخش */
+    .content-section:nth-child(2) { animation-delay: 0.2s; }
+    .content-section:nth-child(3) { animation-delay: 0.4s; }
+    .content-section:nth-child(4) { animation-delay: 0.6s; }
 </style>
+
+<script>
+    $(document).ready(function() {
+        const sidebar = $('#sidebar');
+        const content = $('.lg\\:mr-72');
+        const mobileMenuButton = $('#mobile-menu-button');
+        let isScrolling = false;
+        
+        // اضافه کردن عملکرد منوهای باز شونده
+        $('.menu-section button').on('click', function(e) {
+            e.preventDefault();
+            const section = $(this).closest('.menu-section');
+            const content = section.find('.menu-content');
+            
+            // اگر این بخش باز است، آن را ببند
+            if (section.hasClass('active')) {
+                section.removeClass('active');
+                content.css('max-height', '0px');
+            } else {
+                // بستن سایر بخش‌های باز
+                $('.menu-section.active').removeClass('active');
+                $('.menu-content').css('max-height', '0px');
+                
+                // باز کردن این بخش
+                section.addClass('active');
+                content.css('max-height', content.prop('scrollHeight') + 'px');
+            }
+        });
+        
+        // بهبود عملکرد کلیک در موبایل
+        function smoothScrollTo(target, offset = 0) {
+            if (isScrolling) return;
+            isScrolling = true;
+            
+            const targetPosition = target.offset().top - offset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            const duration = 500;
+            let start = null;
+            
+            function animation(currentTime) {
+                if (start === null) start = currentTime;
+                const timeElapsed = currentTime - start;
+                const progress = Math.min(timeElapsed / duration, 1);
+                
+                const easing = t => t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+                const run = progress => startPosition + distance * easing(progress);
+                
+                window.scrollTo(0, run(progress));
+                
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                } else {
+                    isScrolling = false;
+                    // تنظیم دقیق موقعیت نهایی
+                    window.scrollTo(0, targetPosition);
+                }
+            }
+            
+            requestAnimationFrame(animation);
+        }
+        
+        // بهبود عملکرد منو
+        $('a[href^="#"]').on('click touchend', function(e) {
+            e.preventDefault();
+            const target = $($(this).attr('href'));
+            
+            if (!target.length) return;
+            
+            if (window.innerWidth < 1024) {
+                // بستن منو در موبایل
+                sidebar.removeClass('sidebar-open');
+                mobileMenuButton.removeClass('active');
+                content.removeClass('content-shifted');
+                $('body').removeClass('overflow-hidden');
+                
+                // تاخیر برای اتمام انیمیشن بستن منو
+                setTimeout(() => {
+                    const offset = window.innerWidth < 768 ? 64 : 96;
+                    smoothScrollTo(target, offset);
+                }, 300);
+            } else {
+                smoothScrollTo(target, 96);
+            }
+        });
+        
+        // بهبود عملکرد دکمه منو
+        mobileMenuButton.on('click', function(e) {
+            e.stopPropagation();
+            $(this).toggleClass('active');
+            sidebar.toggleClass('sidebar-open');
+            content.toggleClass('content-shifted');
+            
+            if (sidebar.hasClass('sidebar-open')) {
+                $('body').addClass('overflow-hidden');
+                sidebar.addClass('fade-in');
+            } else {
+                $('body').removeClass('overflow-hidden');
+                sidebar.removeClass('fade-in');
+            }
+        });
+        
+        // بستن منو با کلیک خارج از آن
+        $(document).on('click touchstart', function(e) {
+            if (sidebar.hasClass('sidebar-open') && 
+                !sidebar.is(e.target) && 
+                !sidebar.has(e.target).length && 
+                !mobileMenuButton.is(e.target) && 
+                !mobileMenuButton.has(e.target).length) {
+                
+                mobileMenuButton.removeClass('active');
+                sidebar.removeClass('sidebar-open fade-in');
+                content.removeClass('content-shifted');
+                $('body').removeClass('overflow-hidden');
+            }
+        });
+        
+        // بهینه‌سازی اسکرول
+        let scrollTimeout;
+        const sections = $('section[id]');
+        
+        function updateActiveSection() {
+            const scrollPosition = $(window).scrollTop() + (window.innerWidth < 768 ? 64 : 96);
+            
+            sections.each(function() {
+                const section = $(this);
+                const sectionTop = section.offset().top;
+                const sectionBottom = sectionTop + section.outerHeight();
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    const id = section.attr('id');
+                    $('.menu-content a').removeClass('text-blue-400 border-blue-500');
+                    $(`.menu-content a[href="#${id}"]`).addClass('text-blue-400 border-blue-500');
+                    
+                    // باز کردن منوی والد در صورت بسته بودن
+                    const parentSection = $(`.menu-content a[href="#${id}"]`).closest('.menu-section');
+                    if (!parentSection.hasClass('active')) {
+                        $('.menu-section').removeClass('active');
+                        $('.menu-content').css('max-height', '0px');
+                        parentSection.addClass('active');
+                        parentSection.find('.menu-content').css('max-height', parentSection.find('.menu-content').prop('scrollHeight') + 'px');
+                    }
+                }
+            });
+        }
+        
+        $(window).on('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateActiveSection, 100);
+        });
+        
+        // اضافه کردن کلاس‌های ترنزیشن
+        sidebar.addClass('smooth-transition');
+        content.addClass('smooth-transition');
+        mobileMenuButton.addClass('smooth-transition');
+        
+        // آپدیت اولیه بخش فعال
+        updateActiveSection();
+
+        // بهبود ظاهر بخش‌های محتوا
+        $('section[id]').each(function() {
+            $(this).addClass('content-section');
+            const title = $(this).find('h2');
+            const titleText = title.text();
+            const icon = title.closest('.group').find('.text-2xl, .text-3xl').first();
+            
+            if (icon.length) {
+                icon.addClass('section-icon');
+                title.addClass('section-title');
+            }
+        });
+        
+        // بهبود عملکرد اسکرول
+        function smoothScrollWithEffect(target, offset) {
+            const targetSection = $(target);
+            
+            smoothScrollTo(target, offset);
+            
+            // افکت ویژه برای بخش مورد نظر
+            targetSection.addClass('highlight-section');
+            setTimeout(() => {
+                targetSection.removeClass('highlight-section');
+            }, 1500);
+        }
+        
+        // به‌روزرسانی event listener برای اسکرول
+        $('a[href^="#"]').on('click touchend', function(e) {
+            e.preventDefault();
+            const target = $($(this).attr('href'));
+            
+            if (!target.length) return;
+            
+            if (window.innerWidth < 1024) {
+                sidebar.removeClass('sidebar-open');
+                mobileMenuButton.removeClass('active');
+                content.removeClass('content-shifted');
+                $('body').removeClass('overflow-hidden');
+                
+                setTimeout(() => {
+                    const offset = window.innerWidth < 768 ? 64 : 96;
+                    smoothScrollWithEffect(target, offset);
+                }, 300);
+            } else {
+                smoothScrollWithEffect(target, 96);
+            }
+        });
+    });
+</script>
 {% endblock %} 

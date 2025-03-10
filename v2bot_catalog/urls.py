@@ -20,8 +20,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+handler404 = 'catalog.views.error_404'
+handler500 = 'catalog.views.error_500'
+handler403 = 'catalog.views.error_403'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('catalog.urls')),
     path('accounts/', include('accounts.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

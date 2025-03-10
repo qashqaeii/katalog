@@ -50,6 +50,10 @@ def reporting_management(request):
 def support_training(request):
     return render(request, 'catalog/support_training.html')
 
+def documentation(request):
+    """View function for the documentation page."""
+    return render(request, 'catalog/documentation.html')
+
 class FeaturesView(TemplateView):
     template_name = 'catalog/features.html'
 
@@ -61,3 +65,15 @@ class DocumentationView(TemplateView):
 
 class FAQView(TemplateView):
     template_name = 'catalog/faq.html'
+
+def error_404(request, exception=None):
+    context = {}
+    return render(request, 'catalog/404.html', context, status=404)
+
+def error_500(request, *args, **argv):
+    context = {}
+    return render(request, 'catalog/500.html', context, status=500)
+
+def error_403(request, exception=None):
+    context = {}
+    return render(request, 'catalog/403.html', context, status=403)

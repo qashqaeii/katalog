@@ -1,0 +1,210 @@
+# راهنمای دیپلوی پروژه V2Bot Catalog
+این راهنما مراحل کامل دیپلوی پروژه V2Bot Catalog روی سرور لینوکس را توضیح می‌دهد.
+
+## فهرست مطالب
+- پیش‌نیازها
+- مراحل نصب
+- تنظیمات پروژه
+- تنظیمات وب سرور
+- راه‌اندازی سرویس‌ها
+- رفع مشکلات رایج
+
+## پیش‌نیازها
+- سرور لینوکس (Ubuntu 20.04 یا بالاتر)
+- Python 3.8 یا بالاتر
+- MySQL 8.0
+- Nginx
+- Supervisor
+
+## مراحل نصب
+
+### 1. نصب پکیج‌های مورد نیاز
+```bash
+apt update
+apt upgrade -y
+apt install -y python3-pip python3-dev libmysqlclient-dev build-essential pkg-config nginx supervisor mysql-server
+curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+apt install -y nodejs
+```
+
+### 2. آماده‌سازی دیتابیس
+```bash
+mysql -u root -p
+
+CREATE DATABASE katalog CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'katalog_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON katalog.* TO 'katalog_user'@'localhost';
+FLUSH PRIVILEGES;
+exit;
+```
+
+### 3. تنظیم محیط پروژه
+```bash
+mkdir -p /var/www/katalog
+cd /var/www/katalog
+
+python3 -m venv venv
+source venv/bin/activate
+
+pip install django mysqlclient gunicorn python-dotenv django-tailwind
+pip install -r requirements.txt
+```
+
+## تنظیمات پروژه
+
+### 1. تنظیمات Django
+```python
+DEBUG = False
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your_server_ip']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'katalog',
+        'USER': 'katalog_user',
+        'PASSWORD': 'your_password',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+```
+
+### 2. ایجاد دایرکتوری‌ها
+```bash
+mkdir -p /var/www/katalog/static
+mkdir -p /var/www/katalog/media
+mkdir -p /var/www/katalog/staticfiles
+```
+
+### 3. اجرای دستورات Django
+```bash
+python manage.py migrate
+python manage.py collectstatic --noinput
+```
+
+## تنظیمات وب سرور
+
+### 1. تنظیمات Supervisor
+```bash
+[program:katalog]
+directory=/var/www/katalog
+command=/var/www/katalog/venv/bin/gunicorn --workers 3 --bind unix:/var/www/katalog/katalog.sock v2bot_catalog.wsgi:application
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/katalog/gunicorn.err.log
+stdout_logfile=/var/log/katalog/gunicorn.out.log
+user=www-data
+group=www-data
+environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8
+
+[supervisord]
+logfile=/var/log/supervisor/supervisord.log
+```
+
+### 2. تنظیمات Nginx
+```nginx
+server {
+    listen 80;
+    server_name your_server_ip;
+
+    location = /favicon.ico { 
+        access_log off; 
+        log_not_found off; 
+    }
+    
+    location /static/ {
+        alias /var/www/katalog/staticfiles/;
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    location /media/ {
+        alias /var/www/katalog/media/;
+        expires 30d;
+        add_header Cache-Control "public, no-transform";
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/var/www/katalog/katalog.sock;
+    }
+}
+```
+
+### 3. فعال‌سازی Nginx
+```bash
+ln -s /etc/nginx/sites-available/katalog /etc/nginx/sites-enabled/
+rm /etc/nginx/sites-enabled/default
+```
+
+## راه‌اندازی سرویس‌ها
+
+```bash
+mkdir -p /var/log/katalog
+chown -R www-data:www-data /var/www/katalog
+chmod -R 755 /var/www/katalog
+
+systemctl restart supervisor
+systemctl restart nginx
+systemctl enable supervisor
+systemctl enable nginx
+```
+
+## رفع مشکلات رایج
+
+### 1. مشکل فایل‌های استاتیک
+```bash
+chown -R www-data:www-data /var/www/katalog/staticfiles/
+chmod -R 755 /var/www/katalog/staticfiles/
+python manage.py collectstatic --noinput
+systemctl restart nginx
+systemctl restart supervisor
+```
+
+### 2. مشکل سوکت
+```bash
+ls -l /var/www/katalog/katalog.sock
+chown www-data:www-data /var/www/katalog/katalog.sock
+```
+
+### 3. بررسی لاگ‌ها
+```bash
+tail -f /var/log/nginx/error.log
+tail -f /var/log/katalog/gunicorn.err.log
+tail -f /var/log/supervisor/supervisord.log
+```
+
+## نکات امنیتی
+1. DEBUG = False در محیط تولید
+2. رمزهای عبور قوی
+3. تنظیمات حساس در .env
+4. محدودیت دسترسی‌های فایل
+5. استفاده از HTTPS
+
+## بهینه‌سازی عملکرد
+1. کش مرورگر برای فایل‌های استاتیک
+2. CDN برای فایل‌های استاتیک
+3. فشرده‌سازی با gzip
+4. بهینه‌سازی تصاویر
+
+## پشتیبان‌گیری
+```bash
+mkdir -p /var/backups/katalog
+nano /root/backup_db.sh
+
+#!/bin/bash
+DATE=$(date +%Y%m%d)
+mysqldump -u katalog_user -p'your_password' katalog > /var/backups/katalog/katalog_$DATE.sql
+find /var/backups/katalog/ -type f -name "*.sql" -mtime +7 -delete
+
+chmod +x /root/backup_db.sh
+crontab -e
+0 1 * * * /root/backup_db.sh
+```

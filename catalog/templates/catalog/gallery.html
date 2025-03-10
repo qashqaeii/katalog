@@ -3,6 +3,11 @@
 
 {% block title %}V2Bot - گالری تصاویر{% endblock %}
 
+{% block extra_head %}
+<!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 <div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
     <!-- پس‌زمینه پویا -->
@@ -17,83 +22,312 @@
         <div class="absolute inset-0 opacity-20">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle at center, rgba(59, 130, 246, 0.3) 1px, transparent 1px); background-size: 40px 40px;"></div>
         </div>
+
+        <!-- خطوط نئونی متحرک -->
+        <div class="absolute inset-0">
+            <div class="absolute inset-0 neon-lines"></div>
+        </div>
     </div>
 
     <!-- محتوای اصلی -->
     <div class="relative z-10 container mx-auto px-4 py-12">
-        <!-- هدر صفحه -->
-        <div class="text-center mb-16">
-            <h1 class="text-5xl font-black mb-6 relative font-display">
+        <!-- هدر صفحه با افکت‌های ویژه -->
+        <div class="text-center mb-16 relative">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+            </div>
+            <h1 class="text-5xl font-black mb-6 relative font-display transform hover:scale-105 transition-transform duration-500">
                 <span class="absolute blur-2xl opacity-50 text-blue-500 animate-pulse-slow">گالری تصاویر V2Bot</span>
                 <span class="relative text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 animate-gradient">گالری تصاویر V2Bot</span>
             </h1>
-            <p class="text-xl text-blue-200/80 max-w-3xl mx-auto leading-relaxed font-light">
+            <p class="text-xl text-blue-200/80 max-w-3xl mx-auto leading-relaxed font-light animate-fade-in-up">
                 نمایی از محیط کاربری و امکانات پیشرفته ربات
             </p>
+            
+            <!-- نوار جستجو -->
+            <div class="max-w-2xl mx-auto mt-8 relative group">
+                <input type="text" id="gallery-search" placeholder="جستجو در تصاویر..." class="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl backdrop-blur-xl text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-blue-500/50 transition-all duration-300">
+                <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+                    <svg class="w-6 h-6 text-white/50 group-hover:text-blue-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- فیلترهای گالری -->
+        <div class="flex flex-wrap justify-center gap-4 mb-12">
+            <button class="gallery-filter-btn active" data-filter="all">همه</button>
+            <button class="gallery-filter-btn" data-filter="dashboard">داشبورد</button>
+            <button class="gallery-filter-btn" data-filter="config">تنظیمات</button>
+            <button class="gallery-filter-btn" data-filter="stats">آمار</button>
+            <button class="gallery-filter-btn" data-filter="mobile">موبایل</button>
         </div>
 
         <!-- گرید تصاویر -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 gallery-grid">
             <!-- کارت تصویر 1 -->
-            <div class="group relative transform transition-all duration-500 hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div class="relative bg-gradient-to-br from-blue-900/80 to-indigo-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
-                    <img src="{% static 'catalog/images/dashboard.png' %}" alt="داشبورد" class="w-full h-64 object-cover rounded-xl mb-4">
-                    <h3 class="text-xl font-bold text-white mb-2">داشبورد مدیریت</h3>
-                    <p class="text-blue-200/80">نمای کلی از پنل مدیریت و آمار سیستم</p>
+            <div class="group gallery-item" data-category="dashboard">
+                <div class="relative transform transition-all duration-500 hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-blue-900/80 to-indigo-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
+                        <!-- تصویر با افکت هاور -->
+                        <div class="relative overflow-hidden rounded-xl">
+                            <a href="{% static 'catalog/images/dashboard.png' %}" data-lightbox="gallery" data-title="داشبورد مدیریت">
+                                <img src="{% static 'catalog/images/dashboard.png' %}" alt="داشبورد" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-4">
+                                    <div class="flex gap-4">
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors duration-300">داشبورد مدیریت</h3>
+                            <p class="text-blue-200/80 line-clamp-2">نمای کلی از پنل مدیریت و آمار سیستم با امکانات پیشرفته</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- کارت تصویر 2 -->
-            <div class="group relative transform transition-all duration-500 hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div class="relative bg-gradient-to-br from-indigo-900/80 to-violet-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
-                    <img src="{% static 'catalog/images/config.png' %}" alt="تنظیمات" class="w-full h-64 object-cover rounded-xl mb-4">
-                    <h3 class="text-xl font-bold text-white mb-2">صفحه تنظیمات</h3>
-                    <p class="text-indigo-200/80">مدیریت پیکربندی‌های مختلف سیستم</p>
+            <div class="group gallery-item" data-category="config">
+                <div class="relative transform transition-all duration-500 hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-r from-indigo-500 to-violet-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-indigo-900/80 to-violet-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
+                        <div class="relative overflow-hidden rounded-xl">
+                            <a href="{% static 'catalog/images/config.png' %}" data-lightbox="gallery" data-title="صفحه تنظیمات">
+                                <img src="{% static 'catalog/images/config.png' %}" alt="تنظیمات" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-4">
+                                    <div class="flex gap-4">
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-indigo-400 transition-colors duration-300">صفحه تنظیمات</h3>
+                            <p class="text-indigo-200/80 line-clamp-2">مدیریت پیکربندی‌های مختلف سیستم با رابط کاربری پیشرفته</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- کارت تصویر 3 -->
-            <div class="group relative transform transition-all duration-500 hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div class="relative bg-gradient-to-br from-violet-900/80 to-purple-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
-                    <img src="{% static 'catalog/images/stats.png' %}" alt="آمار" class="w-full h-64 object-cover rounded-xl mb-4">
-                    <h3 class="text-xl font-bold text-white mb-2">نمودارهای آماری</h3>
-                    <p class="text-violet-200/80">تحلیل و نمایش آمار عملکرد سیستم</p>
+            <div class="group gallery-item" data-category="stats">
+                <div class="relative transform transition-all duration-500 hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-violet-900/80 to-purple-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
+                        <div class="relative overflow-hidden rounded-xl">
+                            <a href="{% static 'catalog/images/stats.png' %}" data-lightbox="gallery" data-title="نمودارهای آماری">
+                                <img src="{% static 'catalog/images/stats.png' %}" alt="آمار" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-4">
+                                    <div class="flex gap-4">
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-violet-400 transition-colors duration-300">نمودارهای آماری</h3>
+                            <p class="text-violet-200/80 line-clamp-2">تحلیل و نمایش آمار عملکرد سیستم با نمودارهای تعاملی</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- کارت تصویر 4 -->
-            <div class="group relative transform transition-all duration-500 hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div class="relative bg-gradient-to-br from-purple-900/80 to-pink-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
-                    <img src="{% static 'catalog/images/users.png' %}" alt="کاربران" class="w-full h-64 object-cover rounded-xl mb-4">
-                    <h3 class="text-xl font-bold text-white mb-2">مدیریت کاربران</h3>
-                    <p class="text-purple-200/80">مدیریت و کنترل دسترسی‌های کاربران</p>
-                </div>
-            </div>
-
-            <!-- کارت تصویر 5 -->
-            <div class="group relative transform transition-all duration-500 hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-rose-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div class="relative bg-gradient-to-br from-pink-900/80 to-rose-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
-                    <img src="{% static 'catalog/images/logs.png' %}" alt="لاگ‌ها" class="w-full h-64 object-cover rounded-xl mb-4">
-                    <h3 class="text-xl font-bold text-white mb-2">گزارش‌ها و لاگ‌ها</h3>
-                    <p class="text-pink-200/80">مشاهده و بررسی لاگ‌های سیستم</p>
-                </div>
-            </div>
-
-            <!-- کارت تصویر 6 -->
-            <div class="group relative transform transition-all duration-500 hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-r from-rose-500 to-red-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-                <div class="relative bg-gradient-to-br from-rose-900/80 to-red-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
-                    <img src="{% static 'catalog/images/mobile.png' %}" alt="موبایل" class="w-full h-64 object-cover rounded-xl mb-4">
-                    <h3 class="text-xl font-bold text-white mb-2">نسخه موبایل</h3>
-                    <p class="text-rose-200/80">رابط کاربری واکنش‌گرا برای موبایل</p>
+            <div class="group gallery-item" data-category="mobile">
+                <div class="relative transform transition-all duration-500 hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                    <div class="relative bg-gradient-to-br from-purple-900/80 to-pink-900/80 p-4 rounded-2xl backdrop-blur-xl border border-white/10 overflow-hidden">
+                        <div class="relative overflow-hidden rounded-xl">
+                            <a href="{% static 'catalog/images/mobile.png' %}" data-lightbox="gallery" data-title="نسخه موبایل">
+                                <img src="{% static 'catalog/images/mobile.png' %}" alt="موبایل" class="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-4">
+                                    <div class="flex gap-4">
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                            </svg>
+                                        </button>
+                                        <button class="bg-white/20 p-2 rounded-full backdrop-blur-lg hover:bg-white/30 transition-colors duration-300">
+                                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="mt-4">
+                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors duration-300">نسخه موبایل</h3>
+                            <p class="text-purple-200/80 line-clamp-2">رابط کاربری واکنش‌گرا و بهینه‌شده برای موبایل</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    /* انیمیشن‌های پایه */
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse-slow {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    @keyframes fade-in-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* استایل‌های فیلتر */
+    .gallery-filter-btn {
+        @apply px-6 py-2 rounded-xl bg-white/5 text-white/80 backdrop-blur-lg border border-white/10 
+               hover:bg-white/10 hover:text-white transition-all duration-300 transform hover:scale-105;
+    }
+
+    .gallery-filter-btn.active {
+        @apply bg-blue-500/20 text-blue-400 border-blue-500/30;
+    }
+
+    /* افکت‌های نئونی */
+    .neon-lines {
+        background: 
+            linear-gradient(90deg, transparent, rgba(59,130,246,0.1), transparent) 0 0,
+            linear-gradient(90deg, transparent, rgba(139,92,246,0.1), transparent) 0 0;
+        background-size: 200% 100%;
+        animation: neon-lines 8s linear infinite;
+    }
+
+    @keyframes neon-lines {
+        to {
+            background-position: 200% 0, -200% 0;
+        }
+    }
+
+    /* انیمیشن‌های اضافی */
+    .animate-fade-in-up {
+        animation: fade-in-up 1s ease-out forwards;
+    }
+
+    .animate-gradient {
+        background-size: 200% auto;
+        animation: gradient 8s linear infinite;
+    }
+
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* استایل‌های هاور برای تصاویر */
+    .gallery-item:hover .image-overlay {
+        opacity: 1;
+    }
+
+    /* استایل‌های جستجو */
+    #gallery-search:focus + .search-icon {
+        color: theme('colors.blue.400');
+    }
+</style>
+
+{% block extra_js %}
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script>
+    // تنظیمات Lightbox
+    lightbox.option({
+        'resizeDuration': 300,
+        'wrapAround': true,
+        'albumLabel': 'تصویر %1 از %2',
+        'fadeDuration': 300
+    });
+
+    // فیلتر گالری
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.gallery-filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const searchInput = document.getElementById('gallery-search');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // حذف کلاس active از همه دکمه‌ها
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // اضافه کردن کلاس active به دکمه کلیک شده
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fade-in-up 0.5s ease-out forwards';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // جستجو در گالری
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            galleryItems.forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fade-in-up 0.5s ease-out forwards';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
 {% endblock %} 

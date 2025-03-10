@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-wn)8ad8*^ari4yw5i=w4qmh5vf&!=gou+s-qr^#%ziv0i2o3_!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '23.88.114.145', 'catalog.v2bot.org']
 
 
 # Application definition

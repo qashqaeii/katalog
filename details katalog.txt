@@ -1,0 +1,6 @@
+source venv/bin/activate && cd /var/www/katalog
+
+systemctl restart nginx
+systemctl restart supervisor
+
+python manage.py collectstatic --noinput

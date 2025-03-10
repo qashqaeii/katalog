@@ -1,0 +1,238 @@
+{% extends 'catalog/base.html' %}
+{% load static %}
+
+{% block title %}V2Bot - مستندات{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[#0A0F1C] relative overflow-hidden" dir="rtl">
+    <!-- گرادیان‌های پس‌زمینه -->
+    <div class="absolute inset-0">
+        <div class="absolute w-[1800px] h-[1800px] bg-gradient-to-r from-blue-600/30 via-violet-600/30 to-purple-600/30 rounded-full blur-[100px] -top-[500px] -right-[500px] animate-pulse-slow mix-blend-overlay"></div>
+        <div class="absolute w-[1600px] h-[1600px] bg-gradient-to-r from-indigo-500/20 via-purple-500/20 to-pink-500/20 rounded-full blur-[140px] -bottom-[300px] right-[100px] animate-pulse-slow mix-blend-overlay"></div>
+    </div>
+
+    <!-- محتوای اصلی -->
+    <div class="relative z-10 container mx-auto px-4 py-12">
+        <!-- هدر صفحه -->
+        <div class="text-center mb-16">
+            <h1 class="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 text-transparent bg-clip-text mb-6">مستندات V2Bot</h1>
+            <p class="text-lg text-blue-200/80 max-w-3xl mx-auto">راهنمای جامع نصب، پیکربندی و استفاده از ربات V2Bot</p>
+        </div>
+
+        <!-- بخش‌های مستندات -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- بخش نصب و راه‌اندازی -->
+            <div class="bg-gradient-to-br from-blue-900/50 to-indigo-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-blue-500 to-indigo-500 p-3 rounded-xl">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">نصب و راه‌اندازی</h3>
+                </div>
+                <ul class="space-y-3 text-blue-200/80">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>پیش‌نیازهای نصب</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>نصب در سرور لینوکس</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>پیکربندی اولیه</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- بخش پیکربندی -->
+            <div class="bg-gradient-to-br from-indigo-900/50 to-violet-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-indigo-500 to-violet-500 p-3 rounded-xl">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">پیکربندی</h3>
+                </div>
+                <ul class="space-y-3 text-indigo-200/80">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>تنظیمات پروتکل‌ها</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>مدیریت پورت‌ها</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>تنظیمات امنیتی</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- بخش مدیریت کاربران -->
+            <div class="bg-gradient-to-br from-violet-900/50 to-purple-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-violet-500 to-purple-500 p-3 rounded-xl">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">مدیریت کاربران</h3>
+                </div>
+                <ul class="space-y-3 text-violet-200/80">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>افزودن کاربر جدید</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>مدیریت دسترسی‌ها</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>محدودیت‌های کاربران</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- بخش گزارش‌گیری -->
+            <div class="bg-gradient-to-br from-purple-900/50 to-pink-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-purple-500 to-pink-500 p-3 rounded-xl">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">گزارش‌گیری</h3>
+                </div>
+                <ul class="space-y-3 text-purple-200/80">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>گزارش‌های آماری</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>نمودارهای مصرف</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>گزارش‌های دوره‌ای</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- بخش پشتیبانی -->
+            <div class="bg-gradient-to-br from-pink-900/50 to-rose-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-pink-500 to-rose-500 p-3 rounded-xl">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">پشتیبانی</h3>
+                </div>
+                <ul class="space-y-3 text-pink-200/80">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>تماس با پشتیبانی</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>سوالات متداول</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>راهنمای عیب‌یابی</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- بخش به‌روزرسانی‌ها -->
+            <div class="bg-gradient-to-br from-rose-900/50 to-red-900/50 p-6 rounded-2xl backdrop-blur-xl border border-white/10">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="bg-gradient-to-br from-rose-500 to-red-500 p-3 rounded-xl">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">به‌روزرسانی‌ها</h3>
+                </div>
+                <ul class="space-y-3 text-rose-200/80">
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>آخرین تغییرات</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>راهنمای به‌روزرسانی</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <svg class="w-5 h-5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>تغییرات آینده</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    @keyframes float-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    @keyframes pulse-slow {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 0.7; transform: scale(1.05); }
+    }
+
+    .animate-float-slow {
+        animation: float-slow 6s ease-in-out infinite;
+    }
+
+    .animate-pulse-slow {
+        animation: pulse-slow 4s ease-in-out infinite;
+    }
+</style>
+{% endblock %} 
